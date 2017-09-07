@@ -1,23 +1,22 @@
 # Site settings
-title: Leo Blog
-SEOTitle: 泽奥的博客 | Hux Blog
+title: Your Blog
+SEOTitle: 你的博客 | Your Blog
 header-img: img/home-bg.jpg
-email: yqlizeao@foxmail.com
-description: "Unity3D Developer"
+email: huxpro@gmail.com
+description: ""
 keyword: ""
-url: "https://yqlizeao.55555.io"              # your host, for absolute URL
-baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
+url: "http://huangxuan.me"              # your host, for absolute URL
+baseurl: "/huxblog-boilerplate"         # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
 # SNS settings
 RSS: false
-weibo_username:     胶卷印象
-#zhihu_username:     huxpro
+weibo_username:     huxpro
+zhihu_username:     huxpro
 github_username:    huxpro
-#twitter_username:   huxpro
-#facebook_username:  huxpro
-# linkedin_username:  firstname-lastname-idxxxx
+#twitter_username:  huxpro
+facebook_username:  huxpro
 
 
 
@@ -26,7 +25,7 @@ github_username:    huxpro
 highlighter: rouge
 permalink: pretty
 paginate: 10
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
 
@@ -48,26 +47,28 @@ kramdown:
 
 
 # Disqus settings
-disqus_username: hux
+#disqus_username: _your_disqus_short_name_
 
-# Netease setttings
-netease_comment: false
+# Duoshuo settings
+duoshuo_username: huxblog
+# Share component is depend on Comment so we can NOT use share only.
+duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+
 
 
 
 # Analytics settings
-# Baidu Analytics 
-# ba_track_id: [your track id]
-
+# Baidu Analytics
+ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
 # Google Analytics
-#ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-#ga_domain: huangxuan.me
+ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
+ga_domain: huangxuan.me
 
 
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "用心积累，成长进步<br>在这里我会记下属于自己的财富"
+sidebar-about-description: "写写代码，做做设计，看看产品。世界那么大，多玩玩看看。"
 sidebar-avatar: /img/avatar-hux.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -78,24 +79,22 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 
 
 
-# Progressive Web Apps
-chrome-tab-theme-color: "#000000"
-service-worker: true
-
-
-
 # Friends
 friends: [
     {
-        title: "乱序",
-        href: "http://mida.re/"
-    },
-    {
-        title: "前端外刊评论",
-        href: "http://qianduan.guru/"
-    },
-    {
-        title: "前端神盾局",
-        href: "http://wepiaofei.github.io/blog/"
+        title: "Hux Blog",
+        href: "http://huangxuan.me"
+    },{
+        title: "Foo",
+        href: "#"
+    },{
+        title: "Bar",
+        href: "#"
+    },{
+        title: "Example Friends",
+        href: "#"
+    },{
+        title: "It helps SEO",
+        href: "#"
     }
 ]
