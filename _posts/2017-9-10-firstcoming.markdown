@@ -4,7 +4,7 @@ title:      "要开始写我的第一个博客啦"
 subtitle:   ""
 date:       2017-9-10 20:22:57
 author:     "李泽奥"
-header-img: "img/article-title/firstcoming.jpg"
+header-img: "img/post-bg-nextgen-web-pwa.jpg"
 header-mask: 0.3
 catalog:    true
 tags:
