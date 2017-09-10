@@ -1,7 +1,7 @@
 # Site settings
-title: lizeao Blog
+title: 胶卷的缤纷世界
 SEOTitle: 胶卷印象博客 | Leo Blog
-header-img: img/home-bg.jpg
+header-img: img/main.jpg
 email: yqlizeao@foxmail。com
 description: "Unity3D Developer"
 keyword: "Unity3D,Shader"
@@ -12,7 +12,7 @@ baseurl: ""                             # for example, '/blog' if your blog host
 
 # SNS settings
 RSS: false
-weibo_username:     胶卷印象
+weibo_username:     "胶卷印象"
 #zhihu_username:     huxpro
 github_username:    yqlizeao
 #twitter_username:   huxpro
@@ -43,14 +43,14 @@ gems: [jekyll-paginate]
 # document: http://jekyllrb.com/docs/configuration/#kramdown
 markdown: kramdown
 kramdown:
-  input: GFM                            # use Github Flavored Markdown !important
+   input: GFM                            # use Github Flavored Markdown !important
 
 
 
-# Disqus settings
-disqus_username: hux
+# Disqus settings 评论系统
+#disqus_username: hux
 
-# Netease setttings
+# Netease setttings 网易设置
 netease_comment: false
 
 
@@ -59,26 +59,26 @@ netease_comment: false
 # Baidu Analytics 
 # ba_track_id: [your track id]
 
-# Google Analytics
-#ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-#ga_domain: huangxuan.me
+# Google Analytics 谷歌分析
+ga_track_id: 'UA-106151904-1'            # Format: UA-xxxxxx-xx
+ga_domain: yqlizeao.55555.io
 
 
 
-# Sidebar settings
+# Sidebar settings  侧边栏
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "用心积累，成长进步，<br>学习是一辈子的事情"
-sidebar-avatar: /img/avatar-hux.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/touxiang.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
-# Featured Tags
+# Featured Tags 右侧tags
 featured-tags: true                     # whether or not using Feature-Tags
 featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
 
 
 
-# Progressive Web Apps
+# Progressive Web Apps 伪造想赢
 chrome-tab-theme-color: "#000000"
 service-worker: true
 
@@ -88,11 +88,16 @@ service-worker: true
 friends: [
     {
     
-        title: "乱序",
-        href: "http://mida.re/"
+        title: "冯乐乐",
+        href: "http://candycat1992.github.io/"
     },
     {
-        title: "前端神盾局",
-        href: "http://wepiaofei.github.io/blog/"
-    }
+        title: "浅墨",
+        href: "http://blog.csdn.net/poem_qianmo?viewmode=list"
+    },
+    {
+    
+        title: "雨松MOMO",
+        href: "http://www.xuanyusong.com/"
+    },
 ]
