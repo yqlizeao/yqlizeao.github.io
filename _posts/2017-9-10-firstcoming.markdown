@@ -1,4 +1,4 @@
-﻿---
+---
 layout:     post
 title:      "要开始写我的第一个博客啦"
 subtitle:   ""
@@ -10,7 +10,6 @@ catalog:    true
 tags:
     - Shader
     - Unity3D
-    - FirstComing
 ---
 
 > 一名普通的Unity3D Developer，平常接触的知识很多很杂，所以想写写博客做做积累，也方便自己以后知识的回忆。
