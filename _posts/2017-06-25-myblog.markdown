@@ -15,8 +15,7 @@ published: true
 发现[prose](http://prose.io/ )可以直接写博客
 ![girl](http://yqlizeao.55555.io/_posts/girl.jpg)
 ![333]({{site.baseurl}}/_posts/333.jpg)
-![333](http://yqlizeao.github.io/_posts/333.jpg)
-![smoke_remap_color](http://candycat1992.github.io/img/in-post/2017-07-14-particle-material/smoke_remap_color.png)
+![333](/_posts/333.jpg)
 
 
 ## 最近的心态2017年9月12日12:31:02
