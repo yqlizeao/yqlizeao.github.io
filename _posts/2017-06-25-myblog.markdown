@@ -7,9 +7,9 @@ header-img: img/article-title/firstcoming.jpg
 published: true
 ---
 
-> Unity3D Developer</br>
-> Syudying Computer Graphics</br>
-> Share Learning Experience</br>
+> Unity3D Developer<br>
+> Syudying Computer Graphics<br>
+> Share Learning Experience<br>
 > Timeline Flashback.
 
 ## 哇 打开新世界大门2017年9月12日16:47:28
