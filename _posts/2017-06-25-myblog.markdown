@@ -15,7 +15,7 @@ published: true
 发现[prose](http://prose.io/ )可以直接写博客
 ![girl](http://yqlizeao.55555.io/_posts/girl.jpg)
 ![333]({{site.baseurl}}/_posts/333.jpg)
-![333]({{site.baseurl}}/_posts/333.png)
+![333](http://yqlizeao.55555.io/_posts/333.png)
 
 
 ## 最近的心态2017年9月12日12:31:02
