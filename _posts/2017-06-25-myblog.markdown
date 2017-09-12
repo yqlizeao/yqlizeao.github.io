@@ -1,14 +1,14 @@
 ---
 layout: post
 title: 胶卷印象的时光轴
-date: 2017-09-12T22:38:50.000Z
+date: 2017-09-12T23:05:25.000Z
 author: Leo
 header-img: img/article-title/firstcoming.jpg
 published: true
 ---
 
 > Unity3D Developer<br>
-> Syudying Computer Graphics<br>
+> Studying Computer Graphics<br>
 > Share Learning Experience<br>
 > Timeline Flashback.
 
