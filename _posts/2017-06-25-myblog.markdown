@@ -13,8 +13,6 @@ published: true
 
 ## 哇 2017年9月12日16:47:28
 发现[prose](http://prose.io/ )可以直接写博客
-![girl](http://yqlizeao.55555.io/_posts/girl.jpg)
-![333]({{site.baseurl}}/_posts/333.jpg)
 ![](http://yqlizeao.55555.io/img/article-title/333.jpg)
 
 
