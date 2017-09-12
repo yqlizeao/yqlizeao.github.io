@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 要开始写我的第一个博客啦
-date: 2017-09-12T16:58:51.000Z
+date: {}
 author: Leo
 header-img: img/article-title/firstcoming.jpg
 published: true
@@ -12,7 +12,7 @@ published: true
 
 ## 哇 2017年9月12日16:47:28
 发现[prose](http://prose.io/ )可以直接写博客
-![girl.jpg]({{site.baseurl}}/_posts/girl.jpg)
+![girl.jpg](http://yqlizeao.55555.io/_posts/girl.jpg)
 
 
 ## 最近的心态2017年9月12日12:31:02
