@@ -2,7 +2,7 @@
 layout: post
 title: 要开始写我的第一个博客啦
 date: {}
-author: Hux
+author: Leo
 header-img: img/article-title/firstcoming.jpg
 published: true
 ---
