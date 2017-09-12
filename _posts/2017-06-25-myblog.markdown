@@ -1,20 +1,21 @@
 ---
 layout: post
-title: 要开始写我的第一个博客啦
+title: 胶卷印象的时光轴
 date: 2017-09-12T22:15:52.000Z
 author: Leo
 header-img: img/article-title/firstcoming.jpg
 published: true
 ---
 
-> 一名普通的Unity3D Developer，平常接触的知识很多很杂，所以想写写博客做做积累，也方便自己以后知识的回忆.
+> 一名普通的Unity3D Developer
+> 平常接触的知识很多很杂，所以想写写博客做做积累，也方便自己以后知识的回忆.
 > 按照时间顺序倒序排列.
 
 ## 哇 2017年9月12日16:47:28
 发现[prose](http://prose.io/ )可以直接写博客
-![girl.jpg](http://yqlizeao.55555.io/_posts/girl.jpg)
-![333.jpg]({{site.baseurl}}/_posts/333.jpg)
-![333.png]({{site.baseurl}}/_posts/333.png)
+![girl](http://yqlizeao.55555.io/_posts/girl.jpg)
+![333]({{site.baseurl}}/_posts/333.jpg)
+![333]({{site.baseurl}}/_posts/333.png)
 
 
 ## 最近的心态2017年9月12日12:31:02
