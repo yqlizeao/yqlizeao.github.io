@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 胶卷印象的时光轴
-date: 2017-09-12T23:05:25.000Z
+date: 2017-10-14T17:55:27.000Z
 author: Leo
 header-img: img/article-title/firstcoming.jpg
 published: true
@@ -11,6 +11,13 @@ published: true
 > Studying Computer Graphics<br>
 > Share Learning Experience<br>
 > Timeline Flashback.
+## Shader特效总结 2017年10月14日17:45:27
+随着学习深度的加深，发现了越来越多的**shader特效**。
+在本着有轮子不造轮子的原则下，准备把看到过的shader特效都复现一遍！
+然后总结每一个shader。基本排版为：特效Gif，技术标签（所使用的核心技术），代码，工程地址（GitHub），备注。
+是的你没有看错，我做的仅仅是为了方便检索特效，具体的讲解或许会在文章末尾贴链接。
+放一张今天完成的（建筑遮挡半透的Shader特效）
+![](http://yqlizeao.55555.io/img/article-title/遮挡半透.gif)
 
 ## 哇 打开新世界大门2017年9月12日16:47:28
 发现[prose](http://prose.io/ )可以直接写博客
@@ -21,12 +28,11 @@ published: true
 将近两个月的时间一直在学习,跟很多人沟通过了
 得出的结果是:拿着工资学习没什么不好
 那我应该更加珍惜这段时间
-用心积累,努力学习
+用心积累,努力学习！
 
 
 
 ## 开始新的征程2017年9月11日20:15:57
-
 很喜欢尝试新的东西，对于GitHubPages也是第一次。
 以后会在这边更新自己的学习进度。
 嘿嘿~
