@@ -1,6 +1,7 @@
 ---
 published: false
 ---
+
 >> 高洛德漫反射<br>
 >> Phone漫反射<br>
 >> Phone半兰伯特<br>
@@ -153,5 +154,4 @@ Shader "Phone半兰伯特" {
 	} 
 	FallBack "Diffuse"
 }
-
----
+```
