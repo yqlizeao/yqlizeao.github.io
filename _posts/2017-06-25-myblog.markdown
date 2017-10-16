@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 胶卷印象的时光轴
-date: 2017-10-14T18:05:54.000Z
+date: 2017-10-16T17:14:20.000Z
 author: Leo
 header-img: img/article-title/firstcoming.jpg
 published: true
@@ -12,6 +12,10 @@ published: true
 > Share Learning Experience<br>
 > Timeline Flashback.
 
+## 我的ShaderEffect要出汇总啦
+
+大家点这个->[Shader特效汇总](http://yqlizeao.55555.io/2017/10/16/ShaderEffect/)，就可以看到我的所有shader啦！
+会在最近的一个月内把之前做过的shader全部在整理一遍，大家要多多支持哦！
 
 ## Shader特效总结 2017年10月14日17:45:27
 
