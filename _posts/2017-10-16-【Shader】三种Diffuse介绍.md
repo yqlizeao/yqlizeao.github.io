@@ -1,7 +1,7 @@
 ---
 published: true
 layout: post
-title: ShaderEffect
+title: 三种Diffuse介绍
 date: 2017-10-16T22:54:06.000Z
 author: Leo
 header-img: img/article-title/宇宙.jpg
