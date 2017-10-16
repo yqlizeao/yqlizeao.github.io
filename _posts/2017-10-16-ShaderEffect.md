@@ -2,7 +2,7 @@
 published: true
 layout: post
 title: ShaderEffect
-date: {}
+date: 2017-10-16T00:00:00.000Z
 author: Leo
 header-img: img/article-title/shadertoy.png
 ---
