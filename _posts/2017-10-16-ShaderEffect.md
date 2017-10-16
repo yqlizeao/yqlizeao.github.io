@@ -2,7 +2,7 @@
 published: true
 layout: post
 title: ShaderEffect
-date: 2017-10-16T17:10:13.000Z
+date: {}
 author: Leo
 header-img: img/article-title/shadertoy.png
 ---
@@ -14,3 +14,7 @@ header-img: img/article-title/shadertoy.png
 ## 流光特效
 ![](http://yqlizeao.55555.io/img/shader effect/流光效果.gif)
 **关键词**：uv动画
+
+## 能量罩特效
+![](http://yqlizeao.55555.io/img/shader effect/ForceField.gif)
+**关键词**：相机深度纹理，边缘光
