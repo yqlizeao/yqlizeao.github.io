@@ -3,7 +3,7 @@ layout: post
 title: 胶卷印象的时光轴
 date: 2017-10-16 17:28:50
 author: Leo
-header-img: img/article-title/firstcoming.jpg
+header-img: img/article-title/myblog.jpg
 published: true
 tags:
     - 时光轴
@@ -31,7 +31,7 @@ tags:
 ## 哇 打开新世界大门 2017年9月12日16:47:28
 
 发现[prose](http://prose.io/ )可以直接写博客
-![](http://yqlizeao.55555.io/img/article-title/333.jpg)
+![](http://yqlizeao.55555.io/img/article-title/girl.jpg)
 
 
 ## 最近的心态 2017年9月12日12:31:02
