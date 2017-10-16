@@ -1,5 +1,10 @@
 ---
-published: false
+published: true
+layout: post
+title: ShaderEffect
+date: 2017-10-16T22:54:06.000Z
+author: Leo
+header-img: img/article-title/shadertoy.png
 ---
 >> 高洛德漫反射<br>
 >> Phone漫反射<br>
