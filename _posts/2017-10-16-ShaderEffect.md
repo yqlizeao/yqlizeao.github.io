@@ -1,5 +1,10 @@
 ---
-published: false
+published: true
+layout: post
+title: ShaderEffect
+date: 2017-10-16T17:10:13.000Z
+author: Leo
+header-img: img/article-title/shadertoy.png
 ---
 > **ShaderEffect**<br>
 > 不定期更新<br>
