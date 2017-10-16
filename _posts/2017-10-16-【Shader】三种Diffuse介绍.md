@@ -4,14 +4,17 @@ layout: post
 title: ShaderEffect
 date: 2017-10-16T22:54:06.000Z
 author: Leo
-header-img: img/article-title/宇宙.png
+header-img: img/article-title/宇宙.jpg
 ---
 >> 高洛德漫反射<br>
 >> Phone漫反射<br>
 >> Phone半兰伯特漫反射<br>
 >> 三种基础漫反射Shader
 
+### Diffuse 
+
 ![](http://yqlizeao.55555.io/img/article/diffuse.png)
+（左高洛德漫反射，中Phone漫反射，右Phone半兰伯特漫反射）
 
 ## 更新纪要
 
