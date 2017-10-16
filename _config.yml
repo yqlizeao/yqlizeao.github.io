@@ -1,19 +1,18 @@
 # Site settings
 title: 胶卷的缤纷世界
-SEOTitle: 胶卷印象博客 | Leo Blog
+SEOTitle: 胶卷印象的博客 | Leo Blog
 header-img: img/main.jpg
-email: yqlizeao@foxmail。com
-description: "Unity3D Developer"
+email: yqlizeao@foxmail.com
+description: "Unity3D Developer,热爱渲染，希望自己也能写出绚丽的特效"
 keyword: "Unity3D,Shader"
 url: "https://yqlizeao.55555.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
-
-
+timezone: CN
 
 # SNS settings
 RSS: false
 weibo_username:     yqlizeao
-#zhihu_username:     huxpro
+zhihu_username:     yqlizeao
 github_username:    yqlizeao
 #twitter_username:   huxpro
 #facebook_username:  huxpro
@@ -78,7 +77,7 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 
 
 
-# Progressive Web Apps 伪造想赢
+# Progressive Web Apps 
 chrome-tab-theme-color: "#000000"
 service-worker: true
 
