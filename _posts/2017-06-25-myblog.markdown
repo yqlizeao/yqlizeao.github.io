@@ -12,7 +12,7 @@ published: true
 > Share Learning Experience<br>
 > Timeline Flashback.
 
-## 我的ShaderEffect要出汇总啦
+## 我的ShaderEffect要出汇总啦 2017年10月16日17:20:11
 
 大家点这个->[Shader特效汇总](http://yqlizeao.55555.io/2017/10/16/ShaderEffect/)，就可以看到我的所有shader啦！
 会在最近的一个月内把之前做过的shader全部在整理一遍，大家要多多支持哦！
@@ -26,13 +26,13 @@ published: true
 放一张今天完成的（建筑遮挡半透的Shader特效）
 ![](http://yqlizeao.55555.io/img/article-title/遮挡半透.gif)
 
-## 哇 打开新世界大门2017年9月12日16:47:28
+## 哇 打开新世界大门 2017年9月12日16:47:28
 
 发现[prose](http://prose.io/ )可以直接写博客
 ![](http://yqlizeao.55555.io/img/article-title/333.jpg)
 
 
-## 最近的心态2017年9月12日12:31:02
+## 最近的心态 2017年9月12日12:31:02
 
 将近两个月的时间一直在学习,跟很多人沟通过了
 得出的结果是:拿着工资学习没什么不好
@@ -41,7 +41,7 @@ published: true
 
 
 
-## 开始新的征程2017年9月11日20:15:57
+## 开始新的征程 2017年9月11日20:15:57
 
 很喜欢尝试新的东西，对于GitHubPages也是第一次。
 以后会在这边更新自己的学习进度。
