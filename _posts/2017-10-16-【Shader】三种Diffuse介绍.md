@@ -4,10 +4,10 @@ layout: post
 title: 三种Diffuse介绍
 date: 2017-10-16T22:54:06.000Z
 author: Leo
-header-img: img/article-title/宇宙.jpg
+header-img: img/article-title/三种diffuse介绍.jpg
 tags:
-    - Diffuse
-    - Shader详解(含Code)
+  - Diffuse
+  - Shader详解(含Code)
 ---
 >> 高洛德漫反射<br>
 >> Phone漫反射<br>
