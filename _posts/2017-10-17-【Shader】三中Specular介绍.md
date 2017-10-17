@@ -20,7 +20,7 @@ tags:
 （左高洛德高光反射，中Phone高光反射，右Blinn-Phong光照模型）
 
 ## 更新纪要
-基本光照模型：$c_specular = (c_light dot m_specular)max(0,\vec{v} dot \vec{r})^{m——gloss}$
+基本光照模型：$c_specular = (c_light dot m_specular)max(0,\vec{v} dot \vec{r})^{m_gloss}$
 
 2017年10月17日10:41:14 三中Specular Shader编写
 
