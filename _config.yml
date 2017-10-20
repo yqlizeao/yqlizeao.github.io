@@ -86,9 +86,23 @@ service-worker: true
 # Friends
 friends: [
     {
-    
+        title: "iq",
+        href: "http://www.iquilezles.org/index.html"
+    },
+    {
+        title: "Keijiro",
+        href: "https://github.com/keijiro?utf8=%E2%9C%93&tab=repositories&q=unity&type=&language="
+    },
+    {
         title: "冯乐乐",
         href: "http://candycat1992.github.io/"
+    },
+    {
+        title: "陈嘉栋",
+        href: "http://www.cnblogs.com/murongxiaopifu/"
+    {
+        title: "钱康来",
+        href: "http://qiankanglai.me/"
     },
     {
         title: "浅墨",
