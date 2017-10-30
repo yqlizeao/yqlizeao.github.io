@@ -19,7 +19,7 @@ tags:
 
 
 ## 阴影效果
-![](http://yqlizeao.55555.io/img/shader effect/假shadow.gif)
+![](http://yqlizeao.55555.io/img/shader effect/假shadow.png)
 **关键词**：线面相交
 
 ## 全息特效
