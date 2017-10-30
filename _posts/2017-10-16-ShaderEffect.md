@@ -13,8 +13,23 @@ tags:
 > 开源作品，随意使用<br>
 >  --by leo<br>
 
+## 渐显效果
+![](http://yqlizeao.55555.io/img/shader effect/逐渐显示.gif)
+**关键词**：clip，sign，saturate函数
+
+
+## 阴影效果
+![](http://yqlizeao.55555.io/img/shader effect/假shadow.gif)
+**关键词**：线面相交
+
+## 全息特效
+![](http://yqlizeao.55555.io/img/shader effect/全息投影.gif)
+![](http://yqlizeao.55555.io/img/shader effect/电磁干扰.gif)
+**关键词**：顶点动画，边缘光，frac，step，sin函数
+
 ## 流光特效
 ![](http://yqlizeao.55555.io/img/shader effect/流光效果.gif)
+![](http://yqlizeao.55555.io/img/shader effect/通用流光.gif)
 **关键词**：uv动画
 
 ## 能量罩特效
