@@ -12,7 +12,7 @@ tags:
 >> 高洛德高光反射<br>
 >> Phone高光反射<br>
 >> Blinn-Phong光照模型<br>
->> 三种基础高光反射Shader
+>> 三种基础高光反射Shader<br>
 
 
 ### Specular
@@ -21,7 +21,7 @@ tags:
 
 ## 更新纪要
 
-2017年10月17日21:40:25 增加实际运用当中的Blinn-Phone模型
+2017年10月17日21:40:25 增加实际运用当中的Blinn-Phone模型<br>
 2017年10月17日10:41:14 三中Specular Shader编写
 
 ### 高洛德高光反射
