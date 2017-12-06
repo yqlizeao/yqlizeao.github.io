@@ -11,10 +11,13 @@ tags:
 > ShaderCode<br>
 > 网页收藏<br>
 
-## [ShaderCode](http://note.youdao.com/noteshare?id=f7128827c3a05c1837efc5a2d7e20a73)
+## ShaderCode
 
+[ShaderCode](http://note.youdao.com/noteshare?id=f7128827c3a05c1837efc5a2d7e20a73)
 PS:此文件夹当中的shader是复现完成的。
 
-## [网页收藏](http://note.youdao.com/noteshare?id=ef521f4e765e5cc29e0e482f670640ea)
+## 网页收藏
 
+[网页收藏](http://note.youdao.com/noteshare?id=ef521f4e765e5cc29e0e482f670640ea)
 其中包含 微信收藏的文章（一般来自Unity官方），网页剪报，还有一些图形学书记资源跟shaderpackage
+标题前面有"-"代表文章我已经浏览过啦，里面会有一些红色标注，重点部分！
