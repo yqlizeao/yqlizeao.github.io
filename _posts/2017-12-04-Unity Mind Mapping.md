@@ -27,7 +27,7 @@ tags:
 
 ## C#程序编写基础
 
-开发Unity当然要使用C#啦，[思维导图](http://yqlizeao.55555.io/img/pdf/MindMapping/C#程序编写基础.pdf)帮你过一遍基础知识.
+开发Unity当然要使用C#啦，[思维导图](http://yqlizeao.55555.io/img/pdf/MindMapping/程序语言编写基础.pdf)帮你过一遍基础知识.
 
 ## Unity3D常用组件及分析
 
