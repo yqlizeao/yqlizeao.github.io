@@ -23,7 +23,7 @@ tags:
 > 但这远远是不够的，为了帮助后面的shader学习，和理解图形学，快速入门可以学习《UnityShader入门精要》当中的[第四章](http://yqlizeao.55555.io/img/pdf/ComputerGraphicsBooks/Unity Shader入门精要-数学基础.pdf)<br>
 
 进阶版：可以购买《3D游戏与计算机图形学中的数学方法》by Eric Lengyel<br>
-大神版：可以参考的我另一篇[博文](http://yqlizeao.55555.io/2017/12/04/Unity-Mind-Mapping/)当中的Mathematics部分
+大神版：可以参考的我另一篇[博文](http://yqlizeao.55555.io/2017/12/04/Computer-Graphics-Books/)当中的Mathematics部分
 
 ## C#程序编写基础
 
