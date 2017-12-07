@@ -51,6 +51,9 @@ kramdown:
 
 # Netease setttings 网易设置
 netease_comment: false
+# LiveRe setttings
+# You can get your uid from https://livere.com/insight/myCode (General web site)
+livere_uid: MTAyMC8zMjE5OC84NzYy
 
 
 
