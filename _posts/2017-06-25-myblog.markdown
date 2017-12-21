@@ -14,6 +14,11 @@ tags:
 > Share Learning Experience<br>
 > Timeline Flashback.<br>
 
+## 时间过得可真快啊 2017年12月21日18:15:57
+
+上次回家返深是11.13现在就已经12.21了，真的一眨眼时间就咻咻的跑完了
+最近发现一本书[UnityShader编程](http://yqlizeao.55555.io/img/pdf/ComputerGraphicsBooks/Unity Shader编程.pdf)写的比冯乐乐的Shader入门精要更加符合程序员的阅读习惯，读起来更加轻快舒服。打印了pbrt 3rd，directx9中文版，阳春白雪的shader，跟wikibook上的cg programming in unity。嘿嘿，又有事情可以做啦
+
 
 ## 心情起起伏伏的一年 2017年11月24日11:11:04
 

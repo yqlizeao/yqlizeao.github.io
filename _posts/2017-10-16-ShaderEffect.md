@@ -13,6 +13,10 @@ tags:
 > 开源作品，随意使用<br>
 >  --by leo<br>
 
+## Unity简易的布料模拟
+![](http://yqlizeao.55555.io/img/shader effect/Wave.gif)
+**关键词**：ShadowGun旌旗(CPU Gem3) ，sin函数
+
 ## Diablo3 Wings
 ![](http://yqlizeao.55555.io/img/shader effect/diablo3 wings.gif)
 **关键词**：线渲染器

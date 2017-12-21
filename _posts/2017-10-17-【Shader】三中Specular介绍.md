@@ -10,18 +10,18 @@ tags:
   - Shader详解(含Code)
 ---
 >> 高洛德高光反射<br>
->> Phone高光反射<br>
+>> Phong高光反射<br>
 >> Blinn-Phong光照模型<br>
 >> 三种基础高光反射Shader<br>
 
 
 ### Specular
 ![](http://yqlizeao.55555.io/img/article/Specular.png)
-（左高洛德高光反射，中Phone高光反射，右Blinn-Phong光照模型）
+（左高洛德高光反射，中Phong高光反射，右Blinn-Phong光照模型）
 
 ## 更新纪要
 
-2017年10月17日21:40:25 增加实际运用当中的Blinn-Phone模型<br>
+2017年10月17日21:40:25 增加实际运用当中的Blinn-Phong模型<br>
 2017年10月17日10:41:14 三中Specular Shader编写
 
 ### 高洛德高光反射
@@ -81,10 +81,10 @@ Shader "高洛德高光反射" {
 	FallBack "Specular"
 }
 ```
-### Phone高光反射
+### Phong高光反射
 
 ```
-Shader "Phone高光反射" {
+Shader "Phong高光反射" {
 	Properties {
 		_Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
 		_Specular ("Specular", Color) = (1, 1, 1, 1)
@@ -195,7 +195,7 @@ Shader "Blinn-Phong" {
 	FallBack "Specular"
 }
 ```
-### 实际当中所使用的Blinn-Phone模型
+### 实际当中所使用的Blinn-Phong模型
 
 ```
 Shader "Bumped Specular" {

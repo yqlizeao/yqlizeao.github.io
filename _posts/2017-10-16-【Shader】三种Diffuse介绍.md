@@ -10,18 +10,18 @@ tags:
   - Shader详解(含Code)
 ---
 >> 高洛德漫反射<br>
->> Phone漫反射<br>
->> Phone半兰伯特漫反射<br>
+>> Phong漫反射<br>
+>> Phong半兰伯特漫反射<br>
 >> 三种基础漫反射Shader<br>
 
 ### Diffuse 
 
 ![](http://yqlizeao.55555.io/img/article/diffuse.png)
-（左高洛德漫反射，中Phone漫反射，右Phone半兰伯特漫反射）
+（左高洛德漫反射，中Phong漫反射，右Phong半兰伯特漫反射）
 
 ## 更新纪要
 
-2017年10月17日21:35:43 增加运用于实际的Phone diffuse模型(包含阴影的投射与接收)<br>
+2017年10月17日21:35:43 增加运用于实际的Phong diffuse模型(包含阴影的投射与接收)<br>
 2017年10月16日22:44:48 三种Diffuse Shader编写
 
 ### 高洛德漫反射
@@ -72,9 +72,9 @@ Shader "高洛德漫反射" {
 	FallBack "Diffuse"
 }
 ```
-### Phone漫反射
+### Phong漫反射
 ```
-Shader "Phone漫反射" {
+Shader "Phong漫反射" {
 	Properties {
 		_Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
 	}
@@ -118,9 +118,9 @@ Shader "Phone漫反射" {
 	FallBack "Diffuse"
 }
 ```
-### Phone半兰伯特
+### Phong半兰伯特
 ```
-Shader "Phone半兰伯特" {
+Shader "Phong半兰伯特" {
 	Properties {
 		_Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
 	}
@@ -166,7 +166,7 @@ Shader "Phone半兰伯特" {
 	FallBack "Diffuse"
 }
 ```
-### 实际运用当中的Phone diffuse模型
+### 实际运用当中的Phong diffuse模型
 ```
 Shader "Bumped Diffuse" {
 	Properties {
