@@ -15,6 +15,7 @@ tags:
 
 ## Unity简易的布料模拟
 ![](http://yqlizeao.55555.io/img/shader effect/Wave.gif)
+![](http://yqlizeao.55555.io/img/shader effect/WindSimulate.gif)
 **关键词**：ShadowGun旌旗(CPU Gem3) ，sin函数
 
 ## Diablo3 Wings
