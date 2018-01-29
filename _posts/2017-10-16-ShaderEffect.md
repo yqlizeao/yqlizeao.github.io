@@ -13,6 +13,9 @@ tags:
 > 开源作品，随意使用<br>
 >  --by leo<br>
 
+## MainSequenceStar
+使用UnityWebGL搭建在GitHubPages上面[链接](http://yqlizeao.55555.io/MainSequenceStar-UnityShader/MainSequenceStar/index.html)(请使用PC打开，网页打开后稍作等待)
+
 ## Unity简易的布料模拟
 ![](http://yqlizeao.55555.io/img/shader effect/Wave.gif)
 ![](http://yqlizeao.55555.io/img/shader effect/WindSimulate.gif)
