@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 胶卷印象的时光轴
-date: 2018-05-17T20:54:55.000Z
+date: 2018-8-29 17:09:52
 author: Leo
 header-img: img/article-title/myblog.jpg
 published: true
@@ -13,6 +13,11 @@ tags:
 > Studying Computer Graphics<br>
 > Share Learning Experience<br>
 > Timeline Flashback.<br>
+
+## 孤独的头秃感  2018年8月29日17:15:49
+
+最近被领导派去做引擎相关的开发，刚开始很是兴奋以为可以接触所谓的核心部分。很显然其中的酸爽冷暖自知。哇，真的是爆炸难受，脚本python，底层c++，完全不会。磨洋工磨了小半个月把python版的做出来了，这边的人觉得不合格让我重新做底层c++版的。心态炸了，划了一周多的水，到这两天才好不容易缓过来开始慢慢做，发现真的难搞啊。。。前几天想离职的心都有了，昨天对面的程序员直接被120拖走了，我：...很懵逼真的，这行我到底能不能做，真的令人头秃。
+
 
 ## 端午节后的消极 2018年6月28日20:25:08
 
