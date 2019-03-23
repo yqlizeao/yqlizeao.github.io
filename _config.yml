@@ -3,8 +3,8 @@ title: 胶卷的缤纷世界
 SEOTitle: 胶卷印象的博客 | Leo Blog
 header-img: img/main.jpg
 email: yqlizeao@foxmail.com
-description: "Unity3D Developer,热爱渲染，希望自己也能写出绚丽的特效"
-keyword: "Unity3D,Shader"
+description: "Game Developer, 热爱渲染，希望自己也能写出绚丽的特效"
+keyword: "Unity3D, UnrealEngine, Shader"
 url: "https://yqlizeao.55555.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 timezone: CN
@@ -47,14 +47,14 @@ kramdown:
 
 
 # Disqus settings 评论系统
-#disqus_username: hux
+# disqus_username: hux
 
 # Netease setttings 网易设置
 netease_comment: false
+
 # LiveRe setttings
 # You can get your uid from https://livere.com/insight/myCode (General web site)
 livere_uid: MTAyMC8zMjE5OC84NzYy
-
 
 
 # Analytics settings
@@ -69,7 +69,7 @@ ga_domain: yqlizeao.55555.io
 
 # Sidebar settings  侧边栏
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "用心积累，成长进步，<br>学习是一辈子的事情"
+sidebar-about-description: "用心积累，成长进步。<br>学习是一辈子的事情"
 sidebar-avatar: /img/touxiang.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
