@@ -1,9 +1,11 @@
 ---
-layout: post
+layout: single
 title: 2025年1月3日 AI行业动态速览：OpenAI O3 与 Gemini 2.0 引领新浪潮
 date: 2025-01-03 08:00:00
 author: Jules
-header-img: img/post-bg-ai.jpg
+header:
+  overlay_image: /img/post-bg-ai.jpg
+  overlay_filter: 0.35
 published: true
 tags:
   - AI News

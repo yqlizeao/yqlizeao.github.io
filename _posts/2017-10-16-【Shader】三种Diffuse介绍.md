@@ -1,10 +1,12 @@
 ---
 published: true
-layout: post
+layout: single
 title: 三种Diffuse介绍
 date: 2017-10-16T22:54:06.000Z
 author: Leo
-header-img: img/article-title/三种diffuse介绍.jpg
+header:
+  overlay_image: /img/article-title/三种diffuse介绍.jpg
+  overlay_filter: 0.35
 tags:
   - Diffuse
   - Shader详解(含Code)
