@@ -1,9 +1,11 @@
 ---
-layout: post
+layout: single
 title: 胶卷印象的时光轴
 date: 2019-3-23 16:29:52
 author: Leo
-header-img: img/article-title/myblog.jpg
+header:
+  overlay_image: /img/article-title/myblog.jpg
+  overlay_filter: 0.35
 published: true
 tags:
   - 时光轴

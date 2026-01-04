@@ -1,10 +1,12 @@
 ---
 published: true
-layout: post
+layout: single
 title: ShaderCode整理
 date: 2018-1-29 21:22:42
 author: Leo
-header-img: img/article-title/ShaderCode整理.jpg
+header:
+  overlay_image: /img/article-title/ShaderCode整理.jpg
+  overlay_filter: 0.35
 catalog: true
 tags:
   - ShaderCode

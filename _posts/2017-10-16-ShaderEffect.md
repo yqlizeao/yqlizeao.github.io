@@ -1,10 +1,12 @@
 ---
 published: true
-layout: post
+layout: single
 title: ShaderEffect
 date: 2017-10-16 17:29:07
 author: Leo
-header-img: img/article-title/shadereffect.png
+header:
+  overlay_image: /img/article-title/shadereffect.png
+  overlay_filter: 0.35
 tags:
     - 作品展览
 ---

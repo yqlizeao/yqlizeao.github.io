@@ -1,10 +1,12 @@
 ---
 published: true
-layout: post
+layout: single
 title: UnityMindMapping
 date: 2017-12-4 16:04:17
 author: Leo
-header-img: img/article-title/UnityMindMapping.jpg
+header:
+  overlay_image: /img/article-title/UnityMindMapping.jpg
+  overlay_filter: 0.35
 tags:
   - MindMapping
 ---

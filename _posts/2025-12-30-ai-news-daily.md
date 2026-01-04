@@ -1,9 +1,11 @@
 ---
-layout: post
+layout: single
 title: "2025年12月30日 AI领域新闻日报"
 date: 2025-12-30 18:00:00
 author: Jules
-header-img: img/post-bg-ai.jpg
+header:
+  overlay_image: /img/post-bg-ai.jpg
+  overlay_filter: 0.35
 tags:
   - AI
   - News
