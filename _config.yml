@@ -1,123 +1,89 @@
 # Site settings
+lang: zh-CN
+timezone: Asia/Shanghai
+url: "https://yqlizeao.55555.io"
+baseurl: ""
 title: 胶卷的缤纷世界
-SEOTitle: 胶卷印象的博客 | Leo Blog
-header-img: img/main.jpg
-email: yqlizeao@foxmail.com
-description: "Game Developer, 热爱渲染，希望自己也能写出绚丽的特效"
-keyword: "Unity3D, UnrealEngine, Shader"
-url: "https://yqlizeao.55555.io"              # your host, for absolute URL
-baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
-timezone: CN
+tagline: 胶卷印象的博客 | Leo Blog
+description: "Game Developer，热爱渲染，希望自己也能写出绚丽的特效"
 
-# SNS settings
-RSS: false
-weibo_username:     yqlizeao
-zhihu_username:     yqlizeao
-github_username:    yqlizeao
-twitter_username:   yqlizeao
-facebook_username:  yqlizeao
-linkedin_username:  泽奥-李-288700104
+# Author
+author:
+  name: Leo
+  avatar: /img/touxiang.jpg
+  bio: "用心积累，成长进步。学习是一辈子的事情。"
+  location: China
+  links:
+    - label: Email
+      url: mailto:yqlizeao@foxmail.com
+      icon: fas fa-envelope
+    - label: GitHub
+      url: https://github.com/yqlizeao
+      icon: fab fa-github
+    - label: Weibo
+      url: https://weibo.com/yqlizeao
+      icon: fab fa-weibo
+    - label: Zhihu
+      url: https://www.zhihu.com/people/yqlizeao
+      icon: fab fa-zhihu
+    - label: Twitter
+      url: https://twitter.com/yqlizeao
+      icon: fab fa-twitter
 
+# Theme
+theme: jekyll-theme-chirpy
 
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-feed
 
-# Build settings
-# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
-highlighter: rouge
-permalink: pretty
+feed:
+  path: atom.xml
+
+# Pagination
 paginate: 10
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
-anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+paginate_path: /page:num/
 
+# Collections
+collections:
+  tabs:
+    output: true
+    sort_by: order
 
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: "_tabs"
+      type: tabs
+    values:
+      layout: page
 
-# Gems
-# from PR#40, to support local preview for Jekyll 3.0
-gems: [jekyll-paginate]
-
-
-
-# Markdown settings
-# replace redcarpet to kramdown,
-# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
-# document: http://jekyllrb.com/docs/configuration/#kramdown
+# Markdown
 markdown: kramdown
 kramdown:
-   input: GFM                            # use Github Flavored Markdown !important
+  input: GFM
+  syntax_highlighter: rouge
 
+# Social preview
+social:
+  name: Leo
+  links:
+    - https://github.com/yqlizeao
 
+# Analytics
+google_analytics:
+  id: UA-106151904-1
+  anonymize_ip: false
 
-# Disqus settings 评论系统
-# disqus_username: hux
-
-# Netease setttings 网易设置
-netease_comment: false
-
-# LiveRe setttings
-# You can get your uid from https://livere.com/insight/myCode (General web site)
-livere_uid: MTAyMC8zMjE5OC84NzYy
-
-
-# Analytics settings
-# Baidu Analytics 
-# ba_track_id: [your track id]
-
-# Google Analytics 谷歌分析
-ga_track_id: 'UA-106151904-1'            # Format: UA-xxxxxx-xx
-ga_domain: yqlizeao.55555.io
-
-
-
-# Sidebar settings  侧边栏
-sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "用心积累，成长进步。<br>学习是一辈子的事情"
-sidebar-avatar: /img/touxiang.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
-
-
-
-# Featured Tags 右侧tags
-featured-tags: true                     # whether or not using Feature-Tags
-featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
-
-
-
-# Progressive Web Apps 
-chrome-tab-theme-color: "#000000"
-service-worker: true
-
-
-
-# Friends
-friends: [
-    {
-        title: "iq",
-        href: "http://www.iquilezles.org/index.html"
-    },
-    {
-        title: "Keijiro",
-        href: "https://github.com/keijiro?utf8=%E2%9C%93&tab=repositories&q=unity&type=&language="
-    },
-    {
-        title: "冯乐乐",
-        href: "http://candycat1992.github.io/"
-    },
-    {
-        title: "陈嘉栋",
-        href: "http://www.cnblogs.com/murongxiaopifu/"
-    },
-    {
-        title: "钱康来",
-        href: "http://qiankanglai.me/"
-    },
-    {
-        title: "浅墨",
-        href: "http://blog.csdn.net/poem_qianmo?viewmode=list"
-    },
-    {
-        title: "雨松MOMO",
-        href: "http://www.xuanyusong.com/"
-    },
-    {
-        title: "磊哥",
-        href: "http://blog.dou.li"
-    },
-]
+# Exclude
+exclude:
+  - README.zh.md
+  - node_modules
+  - vendor

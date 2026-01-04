@@ -4,7 +4,6 @@ layout: post
 title: ComputerGraphicsBooks
 date: 2017-12-4 17:14:07
 author: Leo
-header-img: img/article-title/ComputerGraphicsBooks.jpg
 tags:
   - Books
 ---

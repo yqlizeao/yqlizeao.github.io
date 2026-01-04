@@ -4,7 +4,6 @@ layout: post
 title: UnityMindMapping
 date: 2017-12-4 16:04:17
 author: Leo
-header-img: img/article-title/UnityMindMapping.jpg
 tags:
   - MindMapping
 ---

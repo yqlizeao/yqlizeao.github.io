@@ -4,7 +4,6 @@ layout: post
 title: 云笔记ShaderCode&文章收藏
 date: 2017-12-6 17:01:41
 author: Leo
-header-img: img/article-title/文章收藏.jpg
 tags:
   - 有道云笔记
 ---

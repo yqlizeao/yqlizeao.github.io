@@ -3,7 +3,6 @@ layout: post
 title: "2026年1月3日 AI日日报：DeepSeek发布mHC架构，Alphabet 47.5亿美元收购清洁能源公司"
 date: 2026-01-03
 author: Leo
-header-img: "img/post-bg-ai.jpg"
 tags:
     - AI
     - News

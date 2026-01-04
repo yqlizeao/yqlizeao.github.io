@@ -3,7 +3,6 @@ layout: post
 title: "AI每日快讯：2026年1月2日 - 巨头IPO备战与AI网络架构变革"
 date: 2026-01-02 12:00:00
 author: "Leo"
-header-img: "img/post-bg-ai.jpg"
 published: true
 tags:
   - AI

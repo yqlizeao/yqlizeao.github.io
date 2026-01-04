@@ -4,7 +4,6 @@ layout: post
 title: ShaderCode整理
 date: 2018-1-29 21:22:42
 author: Leo
-header-img: img/article-title/ShaderCode整理.jpg
 catalog: true
 tags:
   - ShaderCode
