@@ -1,10 +1,12 @@
 ---
 published: true
-layout: post
+layout: single
 title: 三种Specular介绍
 date: 2017-10-17 12:30:25
 author: Leo
-header-img: img/article-title/三种Specular.jpg
+header:
+  overlay_image: /img/article-title/三种Specular.jpg
+  overlay_filter: 0.35
 tags:
   - Specular
   - Shader详解(含Code)

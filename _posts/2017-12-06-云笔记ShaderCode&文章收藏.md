@@ -1,10 +1,12 @@
 ---
 published: true
-layout: post
+layout: single
 title: 云笔记ShaderCode&文章收藏
 date: 2017-12-6 17:01:41
 author: Leo
-header-img: img/article-title/文章收藏.jpg
+header:
+  overlay_image: /img/article-title/文章收藏.jpg
+  overlay_filter: 0.35
 tags:
   - 有道云笔记
 ---

@@ -1,10 +1,12 @@
 ---
 published: true
-layout: post
+layout: single
 title: ComputerGraphicsBooks
 date: 2017-12-4 17:14:07
 author: Leo
-header-img: img/article-title/ComputerGraphicsBooks.jpg
+header:
+  overlay_image: /img/article-title/ComputerGraphicsBooks.jpg
+  overlay_filter: 0.35
 tags:
   - Books
 ---

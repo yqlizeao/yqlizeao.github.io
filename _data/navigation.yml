@@ -1,0 +1,9 @@
+main:
+  - title: "首页"
+    url: /
+  - title: "标签"
+    url: /tags/
+  - title: "关于"
+    url: /about/
+  - title: "离线"
+    url: /offline.html
