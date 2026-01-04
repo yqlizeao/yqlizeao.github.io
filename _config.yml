@@ -108,6 +108,10 @@ header:
 
 # Excludes
 exclude:
+  - less
   - node_modules
+  - Gruntfile.js
+  - package.json
   - README.zh.md
+  - README.md
   - vendor
