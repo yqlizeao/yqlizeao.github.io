@@ -47,9 +47,7 @@ article:
   show_reading_time: true
   footer:
     license: false
-    share:
-      - qrcode
-      - x
+    share: []
 
 appearance:
   preset: card
