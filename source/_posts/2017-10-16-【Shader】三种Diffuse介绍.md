@@ -1,31 +1,39 @@
 ---
+title: 【Shader】三种基础 Diffuse 漫反射光照模型详解
+date: 2017-10-16 22:54:06
 cover: /img/article-title/三种diffuse介绍.jpg
-title: 三种Diffuse介绍
-date: 2017-10-16T22:54:06.000Z
 tags:
   - Diffuse
   - Shader详解(含Code)
+  - Unity3D
+categories:
+  - 渲染与特效
+tagline: 详解高洛德漫反射、Phong 逐像素漫反射与半兰伯特漫反射的原理及 Shader 实现
 ---
->> 高洛德漫反射<br>
->> Phong漫反射<br>
->> Phong半兰伯特漫反射<br>
->> 三种基础漫反射Shader<br>
 
-### Diffuse 
+> **基础光照模型系列**  
+> 1. 高洛德漫反射 (Gouraud Shading)  
+> 2. Phong 逐像素漫反射  
+> 3. Half-Lambert 半兰伯特漫反射  
+> 4. 包含法线贴图与光照衰减的工程级实现  
+
+---
+
+### 漫反射效果对比
 
 ![](/img/article/diffuse.png)
-（左高洛德漫反射，中Phong漫反射，右Phong半兰伯特漫反射）
+*(左：高洛德漫反射，中：Phong 逐像素漫反射，右：Phong 半兰伯特漫反射)*
 
-## 更新纪要
+---
 
-2017年10月17日21:35:43 增加运用于实际的Phong diffuse模型(包含阴影的投射与接收)<br>
-2017年10月16日22:44:48 三种Diffuse Shader编写
+## 1. 高洛德漫反射 (Gouraud Diffuse)
 
-### 高洛德漫反射
-```
-Shader "高洛德漫反射" {
+> **原理说明**：在**顶点着色器（Vertex Shader）**中计算漫反射光照，然后通过光栅化阶段插值传入片元着色器。计算量小、性能极高，但在低多边形网格表面容易产生明显的折线光照伪影。
+
+```shaderlab
+Shader "Custom/GouraudDiffuse" {
 	Properties {
-		_Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
+		_Diffuse ("Diffuse Color", Color) = (1, 1, 1, 1)
 	}
 	SubShader {
 		Pass { 
@@ -48,18 +56,19 @@ Shader "高洛德漫反射" {
 			v2f vert(a2v v) {
 				v2f o;
 				o.pos = UnityObjectToClipPos(v.vertex);
-				//获取环境光 "Lighting.cginc"决定UNITY_LIGHTMODEL_AMBIENT能拿到，"LightMode"="ForwardBase"决定UNITY_LIGHTMODEL_AMBIENT
+				// 获取环境光 (由 Lighting.cginc 与 ForwardBase 决定)
 				fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
-				fixed3 worldNormal =UnityObjectToWorldNormal(v.normal);
-				//在世界空间下获取光的方向
-				fixed3 worldLight = normalize(_WorldSpaceLightPos0.xyz); //_WorldSpaceLightPos是Forward前向渲染当中重要的光源
-				//计算漫反射 _LightColor0类比_WorldSpaceLightPos0;saturate把漫反射系数截取到[0,1]
+				fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);
+				// 在世界空间下获取平行光方向
+				fixed3 worldLight = normalize(_WorldSpaceLightPos0.xyz);
+				// 计算漫反射：_LightColor0 为光源颜色，saturate 将点积截取至 [0, 1]
 				fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * saturate(dot(worldNormal, worldLight));
 				
-				//此处的颜色累加
+				// 顶点颜色累加环境光与漫反射
 				o.color = ambient + diffuse;
 				return o;
 			}
+			
 			fixed4 frag(v2f i) : SV_Target {
 				return fixed4(i.color, 1.0);
 			}			
@@ -69,11 +78,17 @@ Shader "高洛德漫反射" {
 	FallBack "Diffuse"
 }
 ```
-### Phong漫反射
-```
-Shader "Phong漫反射" {
+
+---
+
+## 2. Phong 逐像素漫反射 (Pixel Diffuse)
+
+> **原理说明**：顶点着色器仅负责将顶点法线转换到世界坐标系并传递给片元；在**片元着色器（Fragment Shader）**中对每个像素逐一归一化法线并计算点积光照。光照平滑细腻，能够完美呈现曲面阴影过渡。
+
+```shaderlab
+Shader "Custom/PixelDiffuse" {
 	Properties {
-		_Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
+		_Diffuse ("Diffuse Color", Color) = (1, 1, 1, 1)
 	}
 	SubShader {
 		Pass { 
@@ -97,7 +112,6 @@ Shader "Phong漫反射" {
 				v2f o;
 				o.pos = UnityObjectToClipPos(v.vertex);
 				o.worldNormal = UnityObjectToWorldNormal(v.normal);
-
 				return o;
 			}
 			
@@ -115,11 +129,17 @@ Shader "Phong漫反射" {
 	FallBack "Diffuse"
 }
 ```
-### Phong半兰伯特
-```
-Shader "Phong半兰伯特" {
+
+---
+
+## 3. Phong 半兰伯特漫反射 (Half-Lambert)
+
+> **原理说明**：由 Valve 在《半条命》中提出，通过公式 `dot(n, l) * 0.5 + 0.5` 将标准朗伯光照 `[-1, 1]` 的范围重新映射到 `[0, 1]`。即使背面不受光也能保留环境阴影层次，有效防止暗部死黑，非常适合角色面部与皮肤渲染。
+
+```shaderlab
+Shader "Custom/HalfLambert" {
 	Properties {
-		_Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
+		_Diffuse ("Diffuse Color", Color) = (1, 1, 1, 1)
 	}
 	SubShader {
 		Pass { 
@@ -138,23 +158,22 @@ Shader "Phong半兰伯特" {
 				float4 pos : SV_POSITION;
 				float3 worldNormal : TEXCOORD0;
 			};
+
 			v2f vert(a2v v) {
 				v2f o;
 				o.pos = UnityObjectToClipPos(v.vertex);
 				o.worldNormal = UnityObjectToWorldNormal(v.normal);
-				
 				return o;
 			}
-			
+
 			fixed4 frag(v2f i) : SV_Target {
 				fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
 				fixed3 worldNormal = normalize(i.worldNormal);
 				fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
-				//将结果范围从[-1,1]映射到[0,1]
-				fixed halfLambert = dot(worldNormal, worldLightDir) * 0.5 + 0.5;
+				// 半兰伯特核心公式映射
+				fixed3 halfLambert = dot(worldNormal, worldLightDir) * 0.5 + 0.5;
 				fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * halfLambert;
 				fixed3 color = ambient + diffuse;
-				
 				return fixed4(color, 1.0);
 			}
 			ENDCG
@@ -163,9 +182,15 @@ Shader "Phong半兰伯特" {
 	FallBack "Diffuse"
 }
 ```
-### 实际运用当中的Phong diffuse模型
-```
-Shader "Bumped Diffuse" {
+
+---
+
+## 4. 工业级工程应用：法线贴图 + 阴影投射与光照衰减
+
+> **原理说明**：实际游戏项目中，漫反射通常配合切线空间法线贴图（Normal Map）与 Unity 前向渲染多 Pass（`ForwardBase` + `ForwardAdd`），以支持多光源累加与实时阴影投射（`TRANSFER_SHADOW` / `SHADOW_ATTENUATION`）。
+
+```shaderlab
+Shader "Custom/BumpedDiffuseWithShadow" {
 	Properties {
 		_Color ("Color Tint", Color) = (1, 1, 1, 1)
 		_MainTex ("Main Tex", 2D) = "white" {}
@@ -174,24 +199,19 @@ Shader "Bumped Diffuse" {
 	SubShader {
 		Tags { "RenderType"="Opaque" "Queue"="Geometry"}
 
+		// Base Pass: 处理平行光、环境光与主阴影
 		Pass { 
 			Tags { "LightMode"="ForwardBase" }
-		
 			CGPROGRAM
-			
-			#pragma multi_compile_fwdbase//正确赋值_lightcolor0
-			
+			#pragma multi_compile_fwdbase
 			#pragma vertex vert
 			#pragma fragment frag
-			
 			#include "Lighting.cginc"
 			#include "AutoLight.cginc"
 			
 			fixed4 _Color;
-			sampler2D _MainTex;
-			float4 _MainTex_ST;
-			sampler2D _BumpMap;
-			float4 _BumpMap_ST;
+			sampler2D _MainTex; float4 _MainTex_ST;
+			sampler2D _BumpMap; float4 _BumpMap_ST;
 			
 			struct a2v {
 				float4 vertex : POSITION;
@@ -211,8 +231,7 @@ Shader "Bumped Diffuse" {
 			
 			v2f vert(a2v v) {
 				v2f o;
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
-				
+				o.pos = UnityObjectToClipPos(v.vertex);
 				o.uv.xy = v.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;
 				o.uv.zw = v.texcoord.xy * _BumpMap_ST.xy + _BumpMap_ST.zw;
 				
@@ -226,54 +245,40 @@ Shader "Bumped Diffuse" {
 				o.TtoW2 = float4(worldTangent.z, worldBinormal.z, worldNormal.z, worldPos.z);  
 				
 				TRANSFER_SHADOW(o);
-				
 				return o;
 			}
 			
 			fixed4 frag(v2f i) : SV_Target {
 				float3 worldPos = float3(i.TtoW0.w, i.TtoW1.w, i.TtoW2.w);
 				fixed3 lightDir = normalize(UnityWorldSpaceLightDir(worldPos));
-				fixed3 viewDir = normalize(UnityWorldSpaceViewDir(worldPos));
 				
 				fixed3 bump = UnpackNormal(tex2D(_BumpMap, i.uv.zw));
 				bump = normalize(half3(dot(i.TtoW0.xyz, bump), dot(i.TtoW1.xyz, bump), dot(i.TtoW2.xyz, bump)));
 				
 				fixed3 albedo = tex2D(_MainTex, i.uv.xy).rgb * _Color.rgb;
-				
 				fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz * albedo;
-			
 			 	fixed3 diffuse = _LightColor0.rgb * albedo * max(0, dot(bump, lightDir));
 				
 				UNITY_LIGHT_ATTENUATION(atten, i, worldPos);
-				
 				return fixed4(ambient + diffuse * atten, 1.0);
 			}
-			
 			ENDCG
 		}
 		
+		// Add Pass: 处理点光源与聚光灯累加
 		Pass { 
 			Tags { "LightMode"="ForwardAdd" }
-			
 			Blend One One
-		
 			CGPROGRAM
-			
 			#pragma multi_compile_fwdadd
-			// Use the line below to add shadows for point and spot lights
-//			#pragma multi_compile_fwdadd_fullshadows
-			
 			#pragma vertex vert
 			#pragma fragment frag
-			
 			#include "Lighting.cginc"
 			#include "AutoLight.cginc"
 			
 			fixed4 _Color;
-			sampler2D _MainTex;
-			float4 _MainTex_ST;
-			sampler2D _BumpMap;
-			float4 _BumpMap_ST;
+			sampler2D _MainTex; float4 _MainTex_ST;
+			sampler2D _BumpMap; float4 _BumpMap_ST;
 			
 			struct a2v {
 				float4 vertex : POSITION;
@@ -293,8 +298,7 @@ Shader "Bumped Diffuse" {
 			
 			v2f vert(a2v v) {
 				v2f o;
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
-				
+				o.pos = UnityObjectToClipPos(v.vertex);
 				o.uv.xy = v.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;
 				o.uv.zw = v.texcoord.xy * _BumpMap_ST.xy + _BumpMap_ST.zw;
 				
@@ -308,27 +312,22 @@ Shader "Bumped Diffuse" {
 				o.TtoW2 = float4(worldTangent.z, worldBinormal.z, worldNormal.z, worldPos.z);  
 				
 				TRANSFER_SHADOW(o);
-				
 				return o;
 			}
 			
 			fixed4 frag(v2f i) : SV_Target {
 				float3 worldPos = float3(i.TtoW0.w, i.TtoW1.w, i.TtoW2.w);
 				fixed3 lightDir = normalize(UnityWorldSpaceLightDir(worldPos));
-				fixed3 viewDir = normalize(UnityWorldSpaceViewDir(worldPos));
 				
 				fixed3 bump = UnpackNormal(tex2D(_BumpMap, i.uv.zw));
 				bump = normalize(half3(dot(i.TtoW0.xyz, bump), dot(i.TtoW1.xyz, bump), dot(i.TtoW2.xyz, bump)));
 				
 				fixed3 albedo = tex2D(_MainTex, i.uv.xy).rgb * _Color.rgb;
-				
 			 	fixed3 diffuse = _LightColor0.rgb * albedo * max(0, dot(bump, lightDir));
 				
 				UNITY_LIGHT_ATTENUATION(atten, i, worldPos);
-				
 				return fixed4(diffuse * atten, 1.0);
 			}
-			
 			ENDCG
 		}
 	} 

@@ -1,89 +1,97 @@
 ---
+title: 计算机图形学经典书单与导读
+date: 2017-12-04 17:14:07
 cover: /img/article-title/ComputerGraphicsBooks.jpg
-title: ComputerGraphicsBooks
-date: 2017-12-4 17:14:07
 tags:
-  - Books
+  - 图形学
+  - 读书笔记
+categories:
+  - 计算机图形学
+tagline: 涵盖入门导论、几何处理、离线与实时渲染、动画流体模拟的经典图书清单与导读
 ---
-> Introduction<br>
-> Geometry Processing<br>
-> Rendering<br>
-> Animation and Simulation<br>
-> Mathematics<br>
-> Toolchain<br>
 
-### 转自[知乎](https://zhuanlan.zhihu.com/p/27158983)
+> **图形学进阶书单导览**  
+> 涵盖：入门导论 · 几何处理 · 渲染算法 · 动画与物理模拟 · 数学基础 · 实用工具链  
+> *(部分书目整理自网络与个人研读精选)*
 
-## Introduction
-> Interactive computer graphics : a top-down approach with shader-based OpenGL / Edward Angel et al.
+---
 
-相当不错的图形学入门读物，偏重实时渲染。用OpenGL（新版本为WebGL）作为教学，简单容易上手。
-[PDF](http://note.youdao.com/noteshare?id=482ea40fb5db35456bf90345a3dfa0ed&sub=E6D3AC450DE8495482D62A16256F9431)
+## 1. Introduction 入门导论
 
-> The Art of 3D Computer Animation and Effects by Isaac V. Kerlow
+* **《Interactive Computer Graphics: A Top-Down Approach with Shader-Based OpenGL》**  
+  *作者：Edward Angel / Dave Shreiner*  
+  相当不错的图形学入门读物，偏重实时渲染。使用 OpenGL（新版为 WebGL）作为教学主线，简单直观易上手。  
+  📄 [本地 PDF 在线阅读](/img/pdf/ComputerGraphicsBooks/Pearson.Interactive.Computer.Graphics.A.Top-Down.Approach.with.WebGL.7th.Edition.0133574849.pdf)
 
-全面介绍电影/动画工业的方方面面，由迪斯尼工作人员攒书，值得一看。没有找到资源，京东有售570RMB，等我找到资源再来填坑。
+* **《The Art of 3D Computer Animation and Effects》**  
+  *作者：Isaac V. Kerlow*  
+  全面介绍电影与动画工业视效制作的方方面面，由迪士尼一线技术团队编写，极具行业视野。
 
-## Geometry Processing几何处理
-> Computational Geometry: Algorithms and Applications. Third Edition. Mark de Berg, et al
+---
 
-计算几何经典之作，深入浅出，例子很多，每一章开头都有本章内容的实际应用，书后附有大量习题。
-[PDF](http://note.youdao.com/noteshare?id=482ea40fb5db35456bf90345a3dfa0ed&sub=E6D3AC450DE8495482D62A16256F9431)
+## 2. Geometry Processing 几何处理
 
-> Polygon mesh processing. CRC press. Botsch et al. 2010
+* **《Computational Geometry: Algorithms and Applications》**  
+  *作者：Mark de Berg 等*  
+  计算几何领域的经典之作，深入浅出、图例详实。每一章开头均紧密结合实际工程应用，书后附有丰富的理论与编程习题。  
+  📄 [本地 PDF 在线阅读](/img/pdf/ComputerGraphicsBooks/Computational%20Geometry%20Algorithms%20and%20Applications.pdf)
 
-包括基本的几何形体处理算法的讲解，比如平滑降噪、参数化、三角剖分、简化与近似、形变等。
-[PDF](http://note.youdao.com/noteshare?id=482ea40fb5db35456bf90345a3dfa0ed&sub=E6D3AC450DE8495482D62A16256F9431)
+* **《Polygon Mesh Processing》**  
+  *作者：Mario Botsch 等 (CRC Press)*  
+  系统讲解多边形网格几何形体处理算法：平滑降噪、网格参数化、Delaunay 三角剖分、网格简化、近似重建与形变控制。
 
-> Discrete Differential Geometry: An Applied Introduction. Keenan Crane 2015
+* **《Discrete Differential Geometry: An Applied Introduction》**  
+  *作者：Keenan Crane*  
+  讲述传统微分几何的基本数学概念如何在离散计算机网格中落地应用。内容涵盖曲率、平行移动、外蕴代数与微积分、拓扑流形、保角映射与有限元方法。
 
-讲述传统微分几何的基本概念如何在离散计算中得到应用，同时也会涉及到对一些相关数学工具的应用的探讨。内容主要包括曲率、平行转移、外蕴代数和微积分、拓扑、霍奇分解、保角映射、有限元方法等。
-[PDF](http://note.youdao.com/noteshare?id=482ea40fb5db35456bf90345a3dfa0ed&sub=E6D3AC450DE8495482D62A16256F9431)
+* **《Vector Field Processing on Triangle Meshes》**  
+  *作者：Fernando de Goes 等*  
+  讲述如何在几何体表面的切空间中定义连续与离散向量场，并应用到几何纹理流动与曲面形变处理中。
 
-> Vector Field Processing on Triangle Meshes. Fernando de Goes et al. 2015
+---
 
-讲述如何在几何体表面的切空间定义向量场并应用到对几何形体的处理中。本文也着重讲解了如何将传统微分几何的概念离散化到三角形网格上，选取三角形、顶点、边作为离散元分别有何优缺点。
-[PDF](http://note.youdao.com/noteshare?id=482ea40fb5db35456bf90345a3dfa0ed&sub=E6D3AC450DE8495482D62A16256F9431)
+## 3. Rendering 渲染技术
 
-## Rendering
-> Physically Based Rendering, From Theory to Implementation /Matt Pharr
+* **《Physically Based Rendering: From Theory to Implementation (PBRT)》**  
+  *作者：Matt Pharr, Wenzel Jakob, Greg Humphreys*  
+  离线基于物理渲染领域的“圣经”。体系完备、推导严密，配套完整的开源 PBRT 渲染器。结合代码学练结合，渲染方向必读书目。
 
-讲解详细体系完备，更难能可贵的是本书配套一个渲染系统，书后习题提供了参考文献和思路来改进这个渲染系统，学练结合，夫复何求？
-[PDF](http://note.youdao.com/noteshare?id=482ea40fb5db35456bf90345a3dfa0ed&sub=E6D3AC450DE8495482D62A16256F9431)
+* **《Real-Time Rendering (RTR)》**  
+  *作者：Tomas Akenine-Möller, Eric Haines, Naty Hoffman*  
+  现代实时渲染工业不可替代的百科全书。全面覆盖现代 GPU 硬件架构、可编程渲染管线、阴影贴图、全局光照近似算法及多项工业级游戏渲染技术。
 
-> Real-Time Rendering, Tomas Akenine-Moller, Eric Haines & Naty Hoffman
+---
 
-与离线渲染相对应的实时渲染经典著作，针对现代图形渲染管线、GPU、着色器等有详细讲解。同时总结了大量游戏开发中非常实用的算法。
-[浅墨CSDN](http://blog.csdn.net/poem_qianmo)
+## 4. Animation & Simulation 动画与模拟
 
-## Animation and Simulation动画和模拟
-> Fluid simulation for computer graphics / Robert Bridson
+* **《Fluid Simulation for Computer Graphics》**  
+  *作者：Robert Bridson*  
+  流体模拟泰斗级专著。从 Navier-Stokes 方程的严密物理推导切入，循序渐进介绍网格法、质点网格法（PIC/FLIP）等流体经典模拟算法，物理模拟方向人手一本的必备参考书。
 
-作者流体模拟届大牛Bridson，从NS方程的推导入手，详细介绍流体模拟的经典算法，是做物理模拟方向的同学几乎人手一本的参考书。
-[PDF](http://note.youdao.com/noteshare?id=482ea40fb5db35456bf90345a3dfa0ed&sub=E6D3AC450DE8495482D62A16256F9431)
+---
 
-> Nonlinear Continuum Mechanics for Finite Element Analysis / Javier Bonet & Richard D. Wood
+## 5. Mathematics 数学基础
 
-固体、软体模拟、声音合成等方向的必读物。从最简单的线性机械学介绍到非线性机械学，对各种应力模型都有详细的介绍。同时对不同机械学模型的有限元分析也进行了深入的讲解。
-[PDF](http://note.youdao.com/noteshare?id=482ea40fb5db35456bf90345a3dfa0ed&sub=E6D3AC450DE8495482D62A16256F9431)
+* **《3D Math Primer for Games and Graphics Development》**  
+  *作者：Fletcher Dunn, Ian Parberry*  
+  专为游戏与图形开发者量身定制的数学基础书。涵盖坐标系变换、向量几何、矩阵运算、四元数旋转插值与碰撞几何检测。
 
-> Boundary Element Method / Stefan A. Sauter & Christoph Schwab
+* **《Mathematics for 3D Game Programming and Computer Graphics》**  
+  *作者：Eric Lengyel*  
+  进阶数学宝典。深入探讨投影矩阵推导、光线追踪射线相交检测、曲线曲面生成与多边形 BSP 空间分割。
 
-本书详细介绍了边界元方法的理论和具体的数值方法。从边界元的概念、伽辽金方法等，讲述到椭圆边界积分方程的性质和解法，之后详细介绍了边界元方法及其在不同应用下的各种变通方法，最后也介绍了一些相关的线性方程求解和误差分析方法。
-[PDF](http://note.youdao.com/noteshare?id=482ea40fb5db35456bf90345a3dfa0ed&sub=E6D3AC450DE8495482D62A16256F9431)
+---
 
-> Rigid Body Simulation I & II / David Baraff
+## 6. Toolchain & Shader 实战
 
-刚体模拟的入门读物，从最基本的刚体运动方程讲到刚体碰撞等。作者是皮克斯动画工作室的高级研究员，其开发的布料模拟算法已被广泛采纳于各种游戏和特效引擎中。
+* **《Unity Shader 入门精要》**  
+  *作者：冯乐乐*  
+  国内 Unity 开发者最友好的 Shader 入门指南，直观易读。  
+  📄 [本地阅读：第四章数学基础 PDF](/img/pdf/ComputerGraphicsBooks/Unity%20Shader入门精要-数学基础.pdf) · [本地完整书目 PDF](/img/pdf/ComputerGraphicsBooks/Unity%20Shader入门精要.pdf)
 
-> The Arts of Fluid Animation / Jos Stam CRC Press
+* **《Unity Shader 编程》**  
+  行文更偏向有经验程序员的思维习惯，条理清晰、轻快实用。  
+  📄 [本地 PDF 在线阅读](/img/pdf/ComputerGraphicsBooks/Unity%20Shader编程.pdf)
 
-Jos Stam讲得很有趣，可以作为引起兴趣的一本入门书籍，还带他的经典代码。
-[PDF](http://note.youdao.com/noteshare?id=482ea40fb5db35456bf90345a3dfa0ed&sub=E6D3AC450DE8495482D62A16256F9431)
-
-> [Fluid Simulation for Video Games](https://software.intel.com/en-us/articles/fluid-simulation-for-video-games-part-1/)
-
-今天在办公室整理资料的时候发现当时一开始学习流体的时候看得很起劲的一个系列教程，叫Fluid Simulation for Video Games （因为我以前是做Game dev的，但后来兴趣有所改变…），这个系列提供很多关于流体的信息，但都不是那种看了作呕的教科书，它还提供一些源码可以玩。
-
-## Mathematics & Toolchain工具链
-去原链里面看去
+* **《OpenGL Programming Guide (红宝书)》 & 《OpenGL SuperBible (蓝宝书)》**  
+  现代图形 API 经典权威指南。

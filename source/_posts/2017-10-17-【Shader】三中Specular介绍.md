@@ -1,34 +1,41 @@
 ---
-cover: /img/article-title/三种Specular.jpg
-title: 三种Specular介绍
+title: 【Shader】三种基础 Specular 高光反射光照模型详解
 date: 2017-10-17 12:30:25
+cover: /img/article-title/三种Specular.jpg
 tags:
   - Specular
   - Shader详解(含Code)
+  - Unity3D
+categories:
+  - 渲染与特效
+tagline: 详解高洛德高光、Phong 逐像素高光与 Blinn-Phong 光照模型的原理及 Shader 实现
 ---
->> 高洛德高光反射<br>
->> Phong高光反射<br>
->> Blinn-Phong光照模型<br>
->> 三种基础高光反射Shader<br>
 
+> **基础光照模型系列**  
+> 1. 高洛德高光反射 (Gouraud Specular)  
+> 2. Phong 逐像素高光反射  
+> 3. Blinn-Phong 光照模型（半角向量优化）  
+> 4. 包含法线贴图与阴影接收的工程级实现  
 
-### Specular
+---
+
+### 高光反射效果对比
+
 ![](/img/article/Specular.png)
-（左高洛德高光反射，中Phong高光反射，右Blinn-Phong光照模型）
+*(左：高洛德高光反射，中：Phong 逐像素高光反射，右：Blinn-Phong 光照模型)*
 
-## 更新纪要
+---
 
-2017年10月17日21:40:25 增加实际运用当中的Blinn-Phong模型<br>
-2017年10月17日10:41:14 三中Specular Shader编写
+## 1. 高洛德高光反射 (Gouraud Specular)
 
-### 高洛德高光反射
+> **原理说明**：在**顶点着色器（Vertex Shader）**中计算反射向量 $\vec{r} = \text{reflect}(-\vec{l}, \vec{n})$，再与视线方向 $\vec{v}$ 做点积求高光。由于高光区域在顶点间非线性变化，顶点插值容易导致高光区域失真或“漏掉”高光斑，现代引擎极少使用。
 
-```
-Shader "高洛德高光反射" {
+```shaderlab
+Shader "Custom/GouraudSpecular" {
 	Properties {
-		_Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
-		_Specular ("Specular", Color) = (1, 1, 1, 1)
-		_Gloss ("Gloss", Range(8.0, 256)) = 20 //用于控制高光区域的大小
+		_Diffuse ("Diffuse Color", Color) = (1, 1, 1, 1)
+		_Specular ("Specular Color", Color) = (1, 1, 1, 1)
+		_Gloss ("Gloss", Range(8.0, 256)) = 20 // 控制高光光斑大小与锐度
 	}
 	SubShader {
 		Pass { 
@@ -46,7 +53,6 @@ Shader "高洛德高光反射" {
 				float4 vertex : POSITION;
 				float3 normal : NORMAL;
 			};
-			
 			struct v2f {
 				float4 pos : SV_POSITION;
 				fixed3 color : COLOR;
@@ -54,37 +60,46 @@ Shader "高洛德高光反射" {
 			
 			v2f vert(a2v v) {
 				v2f o;
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.pos = UnityObjectToClipPos(v.vertex);
 				fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
-				fixed3 worldNormal = normalize(mul(v.normal, (float3x3)unity_WorldToObject));
+				fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);
 				fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
+				
+				// 漫反射计算
 				fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * saturate(dot(worldNormal, worldLightDir));
 				
-				// 计算反射方向
+				// 反射光向量 reflect(入射方向, 法线)
 				fixed3 reflectDir = normalize(reflect(-worldLightDir, worldNormal));
-				// 计算视角方向
-				fixed3 viewDir = normalize(UnityWorldSpaceViewDir(UnityObjectToClipPos(v.vertex)));
+				fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - mul(unity_ObjectToWorld, v.vertex).xyz);
+				
+				// 高光计算：pow(dot(v, r), gloss)
 				fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(saturate(dot(reflectDir, viewDir)), _Gloss);
 				
-				o.color = ambient + diffuse + specular;	 	
+				o.color = ambient + diffuse + specular;
 				return o;
 			}
 			
 			fixed4 frag(v2f i) : SV_Target {
-				retur
+				return fixed4(i.color, 1.0);
+			}
 			ENDCG
 		}
 	} 
 	FallBack "Specular"
 }
 ```
-### Phong高光反射
 
-```
-Shader "Phong高光反射" {
+---
+
+## 2. Phong 逐像素高光反射 (Pixel Specular)
+
+> **原理说明**：在**片元着色器（Fragment Shader）**中逐像素计算反射光向量与视线方向的点积，高光斑边缘过渡柔和真实。
+
+```shaderlab
+Shader "Custom/PixelSpecular" {
 	Properties {
-		_Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
-		_Specular ("Specular", Color) = (1, 1, 1, 1)
+		_Diffuse ("Diffuse Color", Color) = (1, 1, 1, 1)
+		_Specular ("Specular Color", Color) = (1, 1, 1, 1)
 		_Gloss ("Gloss", Range(8.0, 256)) = 20
 	}
 	SubShader {
@@ -94,6 +109,7 @@ Shader "Phong高光反射" {
 			#pragma vertex vert
 			#pragma fragment frag
 			#include "Lighting.cginc"
+			
 			fixed4 _Diffuse;
 			fixed4 _Specular;
 			float _Gloss;
@@ -110,8 +126,8 @@ Shader "Phong高光反射" {
 			
 			v2f vert(a2v v) {
 				v2f o;
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
-				o.worldNormal = mul(v.normal, (float3x3)unity_WorldToObject);
+				o.pos = UnityObjectToClipPos(v.vertex);
+				o.worldNormal = UnityObjectToWorldNormal(v.normal);
 				o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
 				return o;
 			}
@@ -120,27 +136,34 @@ Shader "Phong高光反射" {
 				fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
 				fixed3 worldNormal = normalize(i.worldNormal);
 				fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
+				
 				fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * saturate(dot(worldNormal, worldLightDir));
+				
 				fixed3 reflectDir = normalize(reflect(-worldLightDir, worldNormal));
-				fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - i.worldPos.xyz);
+				fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - i.worldPos);
+				
 				fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(saturate(dot(reflectDir, viewDir)), _Gloss);
 				
 				return fixed4(ambient + diffuse + specular, 1.0);
 			}
-			
 			ENDCG
 		}
 	} 
 	FallBack "Specular"
 }
 ```
-### Blinn-Phong光照模型
 
-```
-Shader "Blinn-Phong" {
+---
+
+## 3. Blinn-Phong 光照模型（半角向量优化）
+
+> **原理说明**：引入**半角向量（Half Vector）** $\vec{h} = \text{normalize}(\vec{l} + \vec{v})$。通过计算法线与半角的点积 $\text{dot}(\vec{n}, \vec{h})$ 替代反射向量 $\vec{r}$，省去了复杂的 `reflect()` 运算，性能更高，且在大入射角观察时的高光更平滑。
+
+```shaderlab
+Shader "Custom/BlinnPhong" {
 	Properties {
-		_Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
-		_Specular ("Specular", Color) = (1, 1, 1, 1)
+		_Diffuse ("Diffuse Color", Color) = (1, 1, 1, 1)
+		_Specular ("Specular Color", Color) = (1, 1, 1, 1)
 		_Gloss ("Gloss", Range(8.0, 256)) = 20
 	}
 	SubShader {
@@ -167,10 +190,9 @@ Shader "Blinn-Phong" {
 			
 			v2f vert(a2v v) {
 				v2f o;
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
-				o.worldNormal = mul(v.normal, (float3x3)unity_WorldToObject);
+				o.pos = UnityObjectToClipPos(v.vertex);
+				o.worldNormal = UnityObjectToWorldNormal(v.normal);
 				o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-				
 				return o;
 			}
 			
@@ -178,24 +200,31 @@ Shader "Blinn-Phong" {
 				fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
 				fixed3 worldNormal = normalize(i.worldNormal);
 				fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
-				fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * max(0, dot(worldNormal, worldLightDir));
-				fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - i.worldPos.xyz);
+				
+				fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * saturate(dot(worldNormal, worldLightDir));
+				
+				fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - i.worldPos);
+				// Blinn-Phong 核心：半角向量
 				fixed3 halfDir = normalize(worldLightDir + viewDir);
-				fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(0, dot(worldNormal, halfDir)), _Gloss);
+				fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(saturate(dot(worldNormal, halfDir)), _Gloss);
 				
 				return fixed4(ambient + diffuse + specular, 1.0);
 			}
-			
 			ENDCG
 		}
 	} 
 	FallBack "Specular"
 }
 ```
-### 实际当中所使用的Blinn-Phong模型
 
-```
-Shader "Bumped Specular" {
+---
+
+## 4. 工业级工程应用：法线贴图 + Blinn-Phong + 阴影与双 Pass
+
+> **原理说明**：支持切线空间法线解包、主光源阴影衰减（`AutoLight.cginc`）以及前向附加光照（`ForwardAdd`）。
+
+```shaderlab
+Shader "Custom/BumpedBlinnPhongWithShadow" {
 	Properties {
 		_Color ("Color Tint", Color) = (1, 1, 1, 1)
 		_MainTex ("Main Tex", 2D) = "white" {}
@@ -205,105 +234,21 @@ Shader "Bumped Specular" {
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" "Queue"="Geometry"}
-		
+
+		// Base Pass
 		Pass { 
 			Tags { "LightMode"="ForwardBase" }
 			CGPROGRAM
-			#pragma multi_compile_fwdbase//某些内置变量会被正确赋值	
+			#pragma multi_compile_fwdbase
 			#pragma vertex vert
 			#pragma fragment frag
-			#include "UnityCG.cginc"
-			#include "Lighting.cginc"//_LightColor0
-			#include "AutoLight.cginc"//光照衰减UNITY_LIGHT_ATTENUATION
-			
-			fixed4 _Color;
-			sampler2D _MainTex;
-			float4 _MainTex_ST;
-			sampler2D _BumpMap;
-			float4 _BumpMap_ST;
-			fixed4 _Specular;
-			float _Gloss;
-			
-			struct a2v {
-				float4 vertex : POSITION;
-				float3 normal : NORMAL;
-				float4 tangent : TANGENT;//切线
-				float4 texcoord : TEXCOORD0;
-			};
-			
-			struct v2f {
-				float4 pos : SV_POSITION;
-				float4 uv : TEXCOORD0;
-				float4 TtoW0 : TEXCOORD1;
-				float4 TtoW1 : TEXCOORD2;
-				float4 TtoW2 : TEXCOORD3; 
-				SHADOW_COORDS(4)
-			};
-			
-			v2f vert(a2v v) {
-			 	v2f o;
-			 	o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
-			 	o.uv.xy = v.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;//o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
-			 	o.uv.zw = v.texcoord.xy * _BumpMap_ST.xy + _BumpMap_ST.zw;//存放法线纹理坐标,节省寄存器
-
-				TANGENT_SPACE_ROTATION;//切线空间to模型空间
-				//float3 binormal = cross( normalize(v.normal), normalize(v.tangent.xyz) ) * v.tangent.w;
-				//float3x3 rotation = float3x3( v.tangent.xyz, binormal, v.normal )  //按列排列
-				
-				
-				float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-				fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);
-				fixed3 worldTangent = UnityObjectToWorldDir(v.tangent.xyz);
-				fixed3 worldBinormal = cross(worldNormal, worldTangent) * v.tangent.w;//副切线,*w分量确定其方向
-				o.TtoW0 = float4(worldTangent.x, worldBinormal.x, worldNormal.x, worldPos.x);
-				o.TtoW1 = float4(worldTangent.y, worldBinormal.y, worldNormal.y, worldPos.y);
-				o.TtoW2 = float4(worldTangent.z, worldBinormal.z, worldNormal.z, worldPos.z);  //存放切线空间to世界空间
-  				
-  				TRANSFER_SHADOW(o);
-			 	
-			 	return o;
-			}
-
-                fixed4 frag(v2f i) : SV_Target {
-				float3 worldPos = float3(i.TtoW0.w, i.TtoW1.w, i.TtoW2.w);
-				fixed3 lightDir = normalize(UnityWorldSpaceLightDir(worldPos));
-				fixed3 viewDir = normalize(UnityWorldSpaceViewDir(worldPos));
-				fixed3 bump = UnpackNormal(tex2D(_BumpMap, i.uv.zw));//反映射
-				bump = normalize(half3(dot(i.TtoW0.xyz, bump), dot(i.TtoW1.xyz, bump), dot(i.TtoW2.xyz, bump)));
-				fixed3 albedo = tex2D(_MainTex, i.uv.xy).rgb * _Color.rgb;
-				fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz * albedo;
-			 	fixed3 diffuse = _LightColor0.rgb * albedo * max(0, dot(bump, lightDir));
-			 	fixed3 halfDir = normalize(lightDir + viewDir);
-			 	fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(0, dot(bump, halfDir)), _Gloss);
-			
-				UNITY_LIGHT_ATTENUATION(atten, i, worldPos);
-				return fixed4(ambient + (diffuse + specular) * atten, 1.0);
-			}
-			ENDCG
-		}
-		
-		Pass { 
-			Tags { "LightMode"="ForwardAdd" }
-			Blend One One
-			CGPROGRAM
-			#pragma multi_compile_fwdadd
-			// P189 Use the line below to add shadows for point and spot lights
-//			#pragma multi_compile_fwdadd_fullshadows
-			
-			#pragma vertex vert
-			#pragma fragment frag
-			
 			#include "Lighting.cginc"
-			#include "AutoLight.cginc"//阴影接收
+			#include "AutoLight.cginc"
 			
 			fixed4 _Color;
-			sampler2D _MainTex;
-			float4 _MainTex_ST;
-			sampler2D _BumpMap;
-			float4 _BumpMap_ST;
-			float _BumpScale;
-			fixed4 _Specular;
-			float _Gloss;
+			sampler2D _MainTex; float4 _MainTex_ST;
+			sampler2D _BumpMap; float4 _BumpMap_ST;
+			fixed4 _Specular; float _Gloss;
 			
 			struct a2v {
 				float4 vertex : POSITION;
@@ -311,35 +256,32 @@ Shader "Bumped Specular" {
 				float4 tangent : TANGENT;
 				float4 texcoord : TEXCOORD0;
 			};
-			
 			struct v2f {
 				float4 pos : SV_POSITION;
 				float4 uv : TEXCOORD0;
-				float4 TtoW0 : TEXCOORD1;
-				float4 TtoW1 : TEXCOORD2;
+				float4 TtoW0 : TEXCOORD1;  
+				float4 TtoW1 : TEXCOORD2;  
 				float4 TtoW2 : TEXCOORD3;
-				SHADOW_COORDS(4)//阴影接收
+				SHADOW_COORDS(4)
 			};
 			
 			v2f vert(a2v v) {
-			 	v2f o;
-			 	o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
-			 
-			 	o.uv.xy = v.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;
-			 	o.uv.zw = v.texcoord.xy * _BumpMap_ST.xy + _BumpMap_ST.zw;
-
-				float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-				fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);
-				fixed3 worldTangent = UnityObjectToWorldDir(v.tangent.xyz);
+				v2f o;
+				o.pos = UnityObjectToClipPos(v.vertex);
+				o.uv.xy = v.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;
+				o.uv.zw = v.texcoord.xy * _BumpMap_ST.xy + _BumpMap_ST.zw;
+				
+				float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;  
+				fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);  
+				fixed3 worldTangent = UnityObjectToWorldDir(v.tangent.xyz);  
 				fixed3 worldBinormal = cross(worldNormal, worldTangent) * v.tangent.w; 
-	
-  				o.TtoW0 = float4(worldTangent.x, worldBinormal.x, worldNormal.x, worldPos.x);
-			  	o.TtoW1 = float4(worldTangent.y, worldBinormal.y, worldNormal.y, worldPos.y);
-			  	o.TtoW2 = float4(worldTangent.z, worldBinormal.z, worldNormal.z, worldPos.z);  
-			 	
-			 	TRANSFER_SHADOW(o);//阴影接收
-			 	
-			 	return o;
+				
+				o.TtoW0 = float4(worldTangent.x, worldBinormal.x, worldNormal.x, worldPos.x);
+				o.TtoW1 = float4(worldTangent.y, worldBinormal.y, worldNormal.y, worldPos.y);
+				o.TtoW2 = float4(worldTangent.z, worldBinormal.z, worldNormal.z, worldPos.z);  
+				
+				TRANSFER_SHADOW(o);
+				return o;
 			}
 			
 			fixed4 frag(v2f i) : SV_Target {
@@ -349,18 +291,90 @@ Shader "Bumped Specular" {
 				
 				fixed3 bump = UnpackNormal(tex2D(_BumpMap, i.uv.zw));
 				bump = normalize(half3(dot(i.TtoW0.xyz, bump), dot(i.TtoW1.xyz, bump), dot(i.TtoW2.xyz, bump)));
+				
+				fixed3 albedo = tex2D(_MainTex, i.uv.xy).rgb * _Color.rgb;
+				fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz * albedo;
+			 	fixed3 diffuse = _LightColor0.rgb * albedo * max(0, dot(bump, lightDir));
+				
+				fixed3 halfDir = normalize(lightDir + viewDir);
+				fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(0, dot(bump, halfDir)), _Gloss);
+				
+				UNITY_LIGHT_ATTENUATION(atten, i, worldPos);
+				return fixed4(ambient + (diffuse + specular) * atten, 1.0);
+			}
+			ENDCG
+		}
+		
+		// Add Pass
+		Pass { 
+			Tags { "LightMode"="ForwardAdd" }
+			Blend One One
+			CGPROGRAM
+			#pragma multi_compile_fwdadd
+			#pragma vertex vert
+			#pragma fragment frag
+			#include "Lighting.cginc"
+			#include "AutoLight.cginc"
+			
+			fixed4 _Color;
+			sampler2D _MainTex; float4 _MainTex_ST;
+			sampler2D _BumpMap; float4 _BumpMap_ST;
+			fixed4 _Specular; float _Gloss;
+			
+			struct a2v {
+				float4 vertex : POSITION;
+				float3 normal : NORMAL;
+				float4 tangent : TANGENT;
+				float4 texcoord : TEXCOORD0;
+			};
+			struct v2f {
+				float4 pos : SV_POSITION;
+				float4 uv : TEXCOORD0;
+				float4 TtoW0 : TEXCOORD1;  
+				float4 TtoW1 : TEXCOORD2;  
+				float4 TtoW2 : TEXCOORD3;
+				SHADOW_COORDS(4)
+			};
+			
+			v2f vert(a2v v) {
+				v2f o;
+				o.pos = UnityObjectToClipPos(v.vertex);
+				o.uv.xy = v.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;
+				o.uv.zw = v.texcoord.xy * _BumpMap_ST.xy + _BumpMap_ST.zw;
+				
+				float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;  
+				fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);  
+				fixed3 worldTangent = UnityObjectToWorldDir(v.tangent.xyz);  
+				fixed3 worldBinormal = cross(worldNormal, worldTangent) * v.tangent.w; 
+				
+				o.TtoW0 = float4(worldTangent.x, worldBinormal.x, worldNormal.x, worldPos.x);
+				o.TtoW1 = float4(worldTangent.y, worldBinormal.y, worldNormal.y, worldPos.y);
+				o.TtoW2 = float4(worldTangent.z, worldBinormal.z, worldNormal.z, worldPos.z);  
+				
+				TRANSFER_SHADOW(o);
+				return o;
+			}
+			
+			fixed4 frag(v2f i) : SV_Target {
+				float3 worldPos = float3(i.TtoW0.w, i.TtoW1.w, i.TtoW2.w);
+				fixed3 lightDir = normalize(UnityWorldSpaceLightDir(worldPos));
+				fixed3 viewDir = normalize(UnityWorldSpaceViewDir(worldPos));
+				
+				fixed3 bump = UnpackNormal(tex2D(_BumpMap, i.uv.zw));
+				bump = normalize(half3(dot(i.TtoW0.xyz, bump), dot(i.TtoW1.xyz, bump), dot(i.TtoW2.xyz, bump)));
+				
 				fixed3 albedo = tex2D(_MainTex, i.uv.xy).rgb * _Color.rgb;
 			 	fixed3 diffuse = _LightColor0.rgb * albedo * max(0, dot(bump, lightDir));
-			 	fixed3 halfDir = normalize(lightDir + viewDir);
-			 	fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(0, dot(bump, halfDir)), _Gloss);
-			
+				
+				fixed3 halfDir = normalize(lightDir + viewDir);
+				fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(0, dot(bump, halfDir)), _Gloss);
+				
 				UNITY_LIGHT_ATTENUATION(atten, i, worldPos);
-
 				return fixed4((diffuse + specular) * atten, 1.0);
 			}
 			ENDCG
 		}
 	} 
-	FallBack "Specular"//可能存在阴影投射
+	FallBack "Specular"
 }
 ```
