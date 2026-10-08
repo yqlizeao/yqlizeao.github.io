@@ -70,3 +70,18 @@ search:
   local:
     scope: all
     include_content: true
+
+comments:
+  provider: giscus
+  giscus:
+    data-repo: yqlizeao/yqlizeao.github.io
+    data-repo-id: MDEwOlJlcG9zaXRvcnkxMDIzNzI3NjI=
+    data-category: General
+    data-category-id: null
+    data-mapping: pathname
+    data-strict: 0
+    data-reactions-enabled: 1
+    data-emit-metadata: 0
+    data-input-position: top
+    data-theme: preferred_color_scheme
+    data-lang: zh-CN

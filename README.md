@@ -1,35 +1,19 @@
 # Leo's Blog
 
-个人博客，基于 [Hexo 8](https://hexo.io/) 与 [Stellar 2.0](https://github.com/xaoxuu/hexo-theme-stellar) 主题搭建。
+> Game Developer | Graphics Rendering & Shaders | Unity & Unreal
 
-## 本地开发与预览
+欢迎访问 **Leo's Blog**。这里记录了博主在游戏开发、实时渲染技术、着色器（Shader）编写以及计算机图形学领域的学习笔记与技术积累。
 
-1. **安装依赖**：
-   ```bash
-   npm install
-   ```
+---
 
-2. **本地调试运行**：
-   ```bash
-   npm run server
-   # 或者
-   npx hexo server
-   ```
-   浏览器访问 `http://localhost:4000/` 即可实时预览。
+## 🌐 博客地址
 
-3. **生成静态文件**：
-   ```bash
-   npm run build
-   # 或者
-   npx hexo clean && npx hexo generate
-   ```
+* **在线访问**：[https://yqlizeao.github.io/](https://yqlizeao.github.io/)
 
-4. **新建文章**：
-   ```bash
-   npx hexo new post "文章标题"
-   ```
+---
 
-## 部署说明
+## 📌 内容方向
 
-仓库配置了 GitHub Actions 自动构建工作流（`.github/workflows/deploy.yml`）。
-代码推送到 `master` 分支后，GitHub Actions 会自动编译 Hexo 站点并发布到 GitHub Pages。
+* **图形与渲染技术**：实时渲染管线、Shader 特效制作、光照模型与材质。
+* **游戏引擎实践**：Unity 与 Unreal Engine 图形开发、性能优化与工程总结。
+* **计算机图形学**：3D 数学基础、计算几何、图形学书籍研读与思维导图。
