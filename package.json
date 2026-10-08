@@ -23,5 +23,9 @@
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
     "hexo-theme-stellar": "^2.0.0"
+  },
+  "overrides": {
+    "sharp": "^0.35.5",
+    "braces": "^3.0.3"
   }
 }
