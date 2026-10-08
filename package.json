@@ -26,6 +26,7 @@
   },
   "overrides": {
     "sharp": "^0.35.5",
-    "braces": "^3.0.3"
+    "braces": "^3.0.3",
+    "chokidar": "^4.0.3"
   }
 }
