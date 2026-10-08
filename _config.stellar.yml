@@ -16,18 +16,6 @@ leftbar:
       title: 文章
       icon: default:documents
       url: /
-    - id: archives
-      title: 归档
-      icon: default:calendar
-      url: /archives/
-    - id: categories
-      title: 分类
-      icon: default:category
-      url: /categories/
-    - id: tags
-      title: 标签
-      icon: default:hashtag
-      url: /tags/
     - id: about
       title: 关于
       icon: default:profile
