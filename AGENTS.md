@@ -61,8 +61,7 @@ listing:
 4. **原生组件增强（Stellar Tag Plugins）**：
    - **重点提示**：使用 `{% note info 标题 %}内容{% endnote %}`（支持 `info`, `warning`, `error`）。
    - **多代码/方案对比**：使用 `{% tabs 标签名 %}`。
-   - **长代码/折叠内容**：使用 `{% folding 展开标题 %}内容{% endfolding %}`。
-   - **数学公式**：直接使用标准 LaTeX（`$E=mc^2$` 或 `$$公式$$`）。
+   - **数学公式**：直接使用标准 LaTeX（`$E=mc^2$` 行内公式，或 `$$公式$$` 独立公式块），已配置 `hexo-filter-mathjax` 在构建期预渲染为高质量矢量 SVG。
 
 ---
 
