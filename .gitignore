@@ -1,7 +1,10 @@
-_site
-node_modules
-npm-debug.log
 .DS_Store
-*/.DS_Store
-*/*/.DS_Store
-*.sh
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy_*/
+_multiconfig.yml
+**/_data/caches/
+.cache/

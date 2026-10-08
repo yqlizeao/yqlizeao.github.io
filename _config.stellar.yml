@@ -1,0 +1,87 @@
+# Stellar v2 configuration
+# Docs: https://xaoxuu.com/wiki/stellar/
+
+leftbar:
+  enabled: true
+  brand:
+    name: 胶卷的缤纷世界
+    tagline: 胶卷印象的博客 | Leo Blog
+    image:
+      src: /img/touxiang.jpg
+      variant: avatar
+    search: true
+    ghuser: yqlizeao
+  menu:
+    - id: post
+      title: 文章
+      icon: default:documents
+      url: /
+    - id: archives
+      title: 归档
+      icon: default:calendar
+      url: /archives/
+    - id: categories
+      title: 分类
+      icon: default:category
+      url: /categories/
+    - id: tags
+      title: 标签
+      icon: default:hashtag
+      url: /tags/
+    - id: about
+      title: 关于
+      icon: default:profile
+      url: /about/
+
+footer:
+  sitemap:
+    - title: 博客
+      items:
+        - '[近期文章](/)'
+        - '[文章归档](/archives/)'
+        - '[全部分类](/categories/)'
+        - '[所有标签](/tags/)'
+    - title: 关于与联系
+      items:
+        - '[关于作者](/about/)'
+        - '[GitHub 主页](https://github.com/yqlizeao)'
+        - '[联系邮箱](mailto:yqlizeao@foxmail.com)'
+  content: |
+    本站由 [{author.name}](/) 使用 [{theme.name} {theme.version}]({theme.tree}) 主题创建。
+    本博客所有文章除特别声明外，均采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处。
+
+article:
+  style: tech
+  paragraph_indent: auto
+  banner:
+    background: true
+  listing:
+    card_layout: hero
+    pinned_layout: carousel
+    show_tags: true
+  show_reading_time: true
+  footer:
+    share:
+      - qrcode
+      - weibo
+      - x
+      - email
+
+appearance:
+  preset: card
+  color_scheme: auto
+
+features:
+  color_scheme_switch:
+    enabled: true
+  card_hover:
+    spotlight: true
+    tilt: true
+  reveal:
+    enabled: true
+
+search:
+  provider: local
+  local:
+    scope: all
+    include_content: true
