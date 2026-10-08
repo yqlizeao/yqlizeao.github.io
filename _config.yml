@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 胶卷的缤纷世界
-subtitle: 胶卷印象的博客 | Leo Blog
-description: "Game Developer，热爱渲染，希望自己也能写出绚丽的特效"
+title: Leo's Blog
+subtitle: Game Developer
+description: "Game Developer | Graphics & Rendering"
 keywords:
   - Unity3D
   - UnrealEngine

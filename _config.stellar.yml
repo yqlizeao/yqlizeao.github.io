@@ -4,8 +4,8 @@
 leftbar:
   enabled: true
   brand:
-    name: 胶卷的缤纷世界
-    tagline: 胶卷印象的博客 | Leo Blog
+    name: Leo's Blog
+    tagline: Game Developer
     image:
       src: /img/touxiang.jpg
       variant: avatar

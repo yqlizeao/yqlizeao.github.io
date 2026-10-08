@@ -1,4 +1,4 @@
-# 胶卷的缤纷世界 (Leo Blog)
+# Leo's Blog
 
 个人博客，基于 [Hexo 8](https://hexo.io/) 与 [Stellar 2.0](https://github.com/xaoxuu/hexo-theme-stellar) 主题搭建。
 
