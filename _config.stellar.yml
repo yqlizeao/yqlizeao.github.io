@@ -82,3 +82,6 @@ comments:
     data-input-position: bottom
     data-theme: preferred_color_scheme
     data-lang: zh-CN
+
+inject:
+  head_end: '<style>.highlight.shaderlab .code:before, .highlight.hlsl .code:before { content: "ShaderLab"; } .highlight.csharp .code:before { content: "C#"; }</style>'
