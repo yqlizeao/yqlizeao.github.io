@@ -260,6 +260,14 @@ $$\text{主题全局配置 (\_config.stellar.yml)} \longrightarrow \text{页面�
 * 仓库本地已存有对应资产时（如 `source/img/pdf/` 目录下的思维导图和经典教材），必须优先使用本地相对链接（例如 `[PDF 阅读](/img/pdf/MindMapping/xxx.pdf)`）。
 * 文章内部互链应使用网站根相对路径（例如 `[跳转](/2017/10/16/2017-10-16-ShaderEffect/)`），严禁使用外部写死的测试域名。
 * 任何图片引用路径必须以 `/img/` 开头，严禁使用缺少前导斜杠的 `img/...`。
+### (5) 图标系统与命名空间规范 (Icon System Specification)
+* **回退缺陷与排版坍塌风险**：
+  * 底层 `hexo.utils.icon` 解析机制：当传入未定义的非 URL 图标键时，主题**不会抛错**，而是原样返回键名字符串。
+  * 在侧边栏菜单等紧凑容器（宽度 20~24px）中，该字符串会被强制逐字竖排折行（如 `default:book` 坍塌为 `def/aul/t:b/oo/k`），引发严重界面故障。
+* **严禁臆测图标键名，三原则必须遵守**：
+  1. **官方内置白名单**：知识库/书籍使用 `default:notebook`（**绝无 `default:book`**）、博文使用 `default:documents`、分类使用 `default:category`、标签使用 `default:hashtag`、归档使用 `default:calendar`、用户使用 `default:profile`、专栏使用 `default:pin`。
+  2. **本地字典补充**：非内置图标必须在 `source/_data/icons.yml` 中显式注册完整 SVG 节点。
+  3. **外链/Iconify 支持**：支持直接传入 `https://api.iconify.design/solar:...svg` 链接。
 
 ---
 
