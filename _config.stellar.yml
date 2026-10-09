@@ -19,7 +19,7 @@ leftbar:
       url: /
     - id: wiki
       title: 知识库
-      icon: default:book
+      icon: default:notebook
       url: /wiki/
     - id: categories
       title: 分类
