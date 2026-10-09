@@ -9,14 +9,17 @@ tags:
 categories:
   - 渲染与特效
 tagline: 详解高洛德高光、Phong 逐像素高光与 Blinn-Phong 光照模型的原理及 Shader 实现
+listing:
+  priority: 1
 ---
 
-> **基础光照模型系列**  
-> 1. 高洛德高光反射 (Gouraud Specular)  
-> 2. Phong 逐像素高光反射  
-> 3. Blinn-Phong 光照模型（半角向量优化）  
-> 4. 包含法线贴图与阴影接收的工程级实现  
-
+{% box 基础高光光照模型导览 %}
+本篇系统解析 Unity 实时渲染中三种基础高光反射模型：
+1. **高洛德高光反射 (Gouraud Specular)**：顶点级高光计算，开销极低。
+2. **Phong 逐像素高光反射**：基于反射向量 $\vec{r}$ 与视线 $\vec{v}$ 的高光计算。
+3. **Blinn-Phong 光照模型**：采用半角向量 $\vec{h}$ 替代反射向量，现代渲染工业标准。
+4. **工程级扩展**：法线贴图切线空间与阴影接收完整实现。
+{% endbox %}
 ---
 
 ### 高光反射效果对比
@@ -28,7 +31,9 @@ tagline: 详解高洛德高光、Phong 逐像素高光与 Blinn-Phong 光照模�
 
 ## 1. 高洛德高光反射 (Gouraud Specular)
 
-> **原理说明**：在**顶点着色器（Vertex Shader）**中计算反射向量 $\vec{r} = \text{reflect}(-\vec{l}, \vec{n})$，再与视线方向 $\vec{v}$ 做点积求高光。由于高光区域在顶点间非线性变化，顶点插值容易导致高光区域失真或“漏掉”高光斑，现代引擎极少使用。
+{% box 原理说明 %}
+在**顶点着色器（Vertex Shader）**中计算反射向量 $\vec{r} = \text{reflect}(-\vec{l}, \vec{n})$，再与视线方向 $\vec{v}$ 做点积求高光。由于高光区域在顶点间非线性变化，顶点插值容易导致高光区域失真或“漏掉”高光斑，现代引擎极少使用。
+{% endbox %}
 
 ```shaderlab
 Shader "Custom/GouraudSpecular" {
@@ -93,7 +98,9 @@ Shader "Custom/GouraudSpecular" {
 
 ## 2. Phong 逐像素高光反射 (Pixel Specular)
 
-> **原理说明**：在**片元着色器（Fragment Shader）**中逐像素计算反射光向量与视线方向的点积，高光斑边缘过渡柔和真实。
+{% box 原理说明 %}
+在**片元着色器（Fragment Shader）**中逐像素计算反射光向量与视线方向的点积，高光斑边缘过渡柔和真实。
+{% endbox %}
 
 ```shaderlab
 Shader "Custom/PixelSpecular" {
@@ -157,7 +164,9 @@ Shader "Custom/PixelSpecular" {
 
 ## 3. Blinn-Phong 光照模型（半角向量优化）
 
-> **原理说明**：引入**半角向量（Half Vector）** $\vec{h} = \text{normalize}(\vec{l} + \vec{v})$。通过计算法线与半角的点积 $\text{dot}(\vec{n}, \vec{h})$ 替代反射向量 $\vec{r}$，省去了复杂的 `reflect()` 运算，性能更高，且在大入射角观察时的高光更平滑。
+{% box 原理说明 %}
+引入**半角向量（Half Vector）** $\vec{h} = \text{normalize}(\vec{l} + \vec{v})$。通过计算法线与半角的点积 $\text{dot}(\vec{n}, \vec{h})$ 替代反射向量 $\vec{r}$，省去了复杂的 `reflect()` 运算，性能更高，且在大入射角观察时的高光更平滑。
+{% endbox %}
 
 ```shaderlab
 Shader "Custom/BlinnPhong" {
@@ -221,7 +230,9 @@ Shader "Custom/BlinnPhong" {
 
 ## 4. 工业级工程应用：法线贴图 + Blinn-Phong + 阴影与双 Pass
 
-> **原理说明**：支持切线空间法线解包、主光源阴影衰减（`AutoLight.cginc`）以及前向附加光照（`ForwardAdd`）。
+{% box 原理说明 %}
+支持切线空间法线解包、主光源阴影衰减（`AutoLight.cginc`）以及前向附加光照（`ForwardAdd`）。
+{% endbox %}
 
 ```shaderlab
 Shader "Custom/BumpedBlinnPhongWithShadow" {

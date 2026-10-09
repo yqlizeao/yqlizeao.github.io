@@ -9,12 +9,34 @@ tags:
 categories:
   - 渲染与特效
 tagline: 汇集布料模拟、倒影、全息、溶解、描边等十余种常见游戏 Shader 特效展示
+listing:
+  priority: 2
 ---
 
-> **ShaderEffect 作品展**  
-> 不定期更新，开源作品，随意使用。  
-> —— *By Leo*
+{% box 展厅简介 %}
+**ShaderEffect 作品展**  
+不定期更新，开源作品，随意使用。  
+—— *By Leo*
+{% endbox %}
 
+{% gallery size:m aspect_ratio:original %}
+![](/img/shader%20effect/Dissolve.gif)
+![](/img/shader%20effect/ForceField.gif)
+![](/img/shader%20effect/Wave.gif)
+![](/img/shader%20effect/WindSimulate.gif)
+![](/img/shader%20effect/diablo3%20wings.gif)
+![](/img/shader%20effect/checkerboard%20pattern.gif)
+![](/img/shader%20effect/全息投影.gif)
+![](/img/shader%20effect/流光效果.gif)
+![](/img/shader%20effect/透视边缘.gif)
+![](/img/shader%20effect/通用流光.gif)
+![](/img/shader%20effect/遮挡半透.gif)
+![](/img/shader%20effect/电磁干扰.gif)
+![](/img/shader%20effect/像素化.gif)
+![](/img/shader%20effect/逐渐显示.gif)
+![](/img/shader%20effect/reflection.gif)
+![](/img/shader%20effect/grap.gif)
+{% endgallery %}
 ---
 
 ### 1. MainSequenceStar 主序星

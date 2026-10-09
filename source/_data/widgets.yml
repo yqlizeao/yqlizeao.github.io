@@ -1,0 +1,12 @@
+welcome:
+  layout: markdown
+  title: 欢迎探索
+  content: |
+    **Leo's Game Dev Lab**  
+    专注游戏引擎实时渲染管线、Unity/Unreal、计算机图形学与各类 Shader 着色器技术沉淀。
+    
+    [📚 探索知识库](/wiki/) · [👤 关于作者](/about/)
+
+tagcloud:
+  layout: tagcloud
+  title: 技术标签

@@ -9,14 +9,17 @@ tags:
 categories:
   - 渲染与特效
 tagline: 详解高洛德漫反射、Phong 逐像素漫反射与半兰伯特漫反射的原理及 Shader 实现
+listing:
+  priority: 1
 ---
 
-> **基础光照模型系列**  
-> 1. 高洛德漫反射 (Gouraud Shading)  
-> 2. Phong 逐像素漫反射  
-> 3. Half-Lambert 半兰伯特漫反射  
-> 4. 包含法线贴图与光照衰减的工程级实现  
-
+{% box 基础光照模型导览 %}
+本篇系统解析 Unity 实时渲染中三种基础漫反射模型：
+1. **高洛德漫反射 (Gouraud Shading)**：顶点级光照，性能极高。
+2. **Phong 逐像素漫反射 (Pixel Diffuse)**：片元级光照，过渡细腻。
+3. **Half-Lambert 半兰伯特漫反射**：Valve 经典技术，提升暗部细节。
+4. **工程级扩展**：法线贴图切线空间计算与光照衰减。
+{% endbox %}
 ---
 
 ### 漫反射效果对比
@@ -28,7 +31,9 @@ tagline: 详解高洛德漫反射、Phong 逐像素漫反射与半兰伯特漫�
 
 ## 1. 高洛德漫反射 (Gouraud Diffuse)
 
-> **原理说明**：在**顶点着色器（Vertex Shader）**中计算漫反射光照，然后通过光栅化阶段插值传入片元着色器。计算量小、性能极高，但在低多边形网格表面容易产生明显的折线光照伪影。
+{% box 原理说明 %}
+在**顶点着色器（Vertex Shader）**中计算漫反射光照，然后通过光栅化阶段插值传入片元着色器。计算量小、性能极高，但在低多边形网格表面容易产生明显的折线光照伪影。
+{% endbox %}
 
 ```shaderlab
 Shader "Custom/GouraudDiffuse" {
@@ -83,7 +88,9 @@ Shader "Custom/GouraudDiffuse" {
 
 ## 2. Phong 逐像素漫反射 (Pixel Diffuse)
 
-> **原理说明**：顶点着色器仅负责将顶点法线转换到世界坐标系并传递给片元；在**片元着色器（Fragment Shader）**中对每个像素逐一归一化法线并计算点积光照。光照平滑细腻，能够完美呈现曲面阴影过渡。
+{% box 原理说明 %}
+顶点着色器仅负责将顶点法线转换到世界坐标系并传递给片元；在**片元着色器（Fragment Shader）**中对每个像素逐一归一化法线并计算点积光照。光照平滑细腻，能够完美呈现曲面阴影过渡。
+{% endbox %}
 
 ```shaderlab
 Shader "Custom/PixelDiffuse" {
@@ -134,7 +141,9 @@ Shader "Custom/PixelDiffuse" {
 
 ## 3. Phong 半兰伯特漫反射 (Half-Lambert)
 
-> **原理说明**：由 Valve 在《半条命》中提出，通过公式 `dot(n, l) * 0.5 + 0.5` 将标准朗伯光照 `[-1, 1]` 的范围重新映射到 `[0, 1]`。即使背面不受光也能保留环境阴影层次，有效防止暗部死黑，非常适合角色面部与皮肤渲染。
+{% box 原理说明 %}
+由 Valve 在《半条命》中提出，通过公式 `dot(n, l) * 0.5 + 0.5` 将标准朗伯光照 `[-1, 1]` 的范围重新映射到 `[0, 1]`。即使背面不受光也能保留环境阴影层次，有效防止暗部死黑，非常适合角色面部与皮肤渲染。
+{% endbox %}
 
 ```shaderlab
 Shader "Custom/HalfLambert" {
@@ -187,7 +196,9 @@ Shader "Custom/HalfLambert" {
 
 ## 4. 工业级工程应用：法线贴图 + 阴影投射与光照衰减
 
-> **原理说明**：实际游戏项目中，漫反射通常配合切线空间法线贴图（Normal Map）与 Unity 前向渲染多 Pass（`ForwardBase` + `ForwardAdd`），以支持多光源累加与实时阴影投射（`TRANSFER_SHADOW` / `SHADOW_ATTENUATION`）。
+{% box 原理说明 %}
+实际游戏项目中，漫反射通常配合切线空间法线贴图（Normal Map）与 Unity 前向渲染多 Pass（`ForwardBase` + `ForwardAdd`），以支持多光源累加与实时阴影投射（`TRANSFER_SHADOW` / `SHADOW_ATTENUATION`）。
+{% endbox %}
 
 ```shaderlab
 Shader "Custom/BumpedDiffuseWithShadow" {

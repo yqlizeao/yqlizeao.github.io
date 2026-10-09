@@ -11,16 +11,42 @@ leftbar:
       variant: avatar
     search: true
     ghuser: yqlizeao
+  menu_columns: 2
   menu:
     - id: post
       title: 文章
       icon: default:documents
       url: /
+    - id: wiki
+      title: 知识库
+      icon: default:book
+      url: /wiki/
+    - id: categories
+      title: 分类
+      icon: default:category
+      url: /categories/
+    - id: tags
+      title: 标签
+      icon: default:hashtag
+      url: /tags/
+    - id: archives
+      title: 归档
+      icon: default:calendar
+      url: /archives/
     - id: about
       title: 关于
       icon: default:profile
       url: /about/
-
+  footer:
+    actions:
+      - type: link
+        title: GitHub
+        icon: default:github
+        url: https://github.com/yqlizeao
+      - type: link
+        title: 关于作者
+        icon: default:profile
+        url: /about/
 footer:
   sitemap:
     - title: 博客
@@ -49,8 +75,37 @@ article:
     license: false
     share: []
 
+profiles:
+  home:
+    leftbar:
+      widgets:
+        - welcome
+        - recent
+        - tagcloud
+  post:
+    rightbar:
+      widgets:
+        - toc
+  wiki:
+    leftbar:
+      widgets:
+        - tree
+        - related
+    rightbar:
+      widgets:
+        - ghrepo
+        - toc
 appearance:
   preset: card
+  shape:
+    corner: superellipse(1.25)
+  backgrounds:
+    leftbar:
+      type: gradient
+    page:
+      backdrop:
+        radius: 100px
+        saturation: 300%
   color_scheme: auto
 
 features:

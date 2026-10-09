@@ -1,0 +1,30 @@
+name: 计算机图形学与思维导图
+headline: 图形学经典教材、数学基础与知识脉络
+tagline: 汇总 Unity 性能优化、渲染管线、3D 数学与精选教材
+description: 记录游戏引擎渲染管线设计、性能调优技术全景图与计算机图形学核心知识脉络。
+tags:
+  - 计算机图形学
+  - 思维导图
+  - 渲染管线
+cover: /img/article-title/UnityMindMapping.jpg
+icon: /img/touxiang.jpg
+route:
+  path: /wiki/graphics-study/
+hero:
+  enabled: true
+  background:
+    image: /img/article-title/UnityMindMapping.jpg
+    parallax: 0.2
+    effect:
+      type: galaxy
+      options:
+        starSpeed: 1.5
+        density: 2
+  actions:
+    - title: GitHub 仓库
+      url: https://github.com/yqlizeao
+      icon: default:github
+navigation:
+  tree:
+    知识脉络:
+      - index

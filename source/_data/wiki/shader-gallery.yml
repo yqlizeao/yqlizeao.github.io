@@ -1,0 +1,43 @@
+name: Shader 渲染效果库
+headline: Unity 实时着色器与视觉特效展
+tagline: 汇聚布料模拟、倒影、全息投影、定向溶解等十余种核心着色器效果
+description: 本知识库汇总并展示了游戏开发中常见的着色器视觉特效与核心算法推导，支持 WebGL 在线体验与源码解析。
+tags:
+  - Shader
+  - Unity3D
+  - 实时渲染
+cover: /img/article-title/shadereffect.png
+icon: /img/touxiang.jpg
+route:
+  path: /wiki/shader-gallery/
+hero:
+  enabled: true
+  background:
+    image: /img/article-title/shadereffect.png
+    parallax: 0.2
+    effect:
+      type: strands
+      options:
+        colors:
+          - '#06B6D4'
+          - '#7C3AED'
+          - '#F97316'
+        glass: true
+  preview:
+    type: terminal
+    commands:
+      - label: WebGL 演示
+        codes: open https://yqlizeao.github.io/MainSequenceStar-UnityShader/MainSequenceStar/index.html
+      - label: 源码克隆
+        codes: git clone https://github.com/yqlizeao/yqlizeao.github.io.git
+  actions:
+    - title: 在线体验
+      url: https://yqlizeao.github.io/MainSequenceStar-UnityShader/MainSequenceStar/index.html
+      icon: default:play
+    - title: GitHub 源码
+      url: https://github.com/yqlizeao
+      icon: default:github
+navigation:
+  tree:
+    特效展厅:
+      - index
